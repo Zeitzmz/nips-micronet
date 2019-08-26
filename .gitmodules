@@ -2,3 +2,6 @@
 	path = caffe
 	url = https://github.com/Zeitzmz/caffe.git
 	branch = master
+[submodule "micronet-caffe"]
+	path = micronet-caffe
+	url = git@github.com:Zeitzmz/micronet-caffe.git

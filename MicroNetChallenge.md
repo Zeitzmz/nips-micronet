@@ -122,7 +122,7 @@ s = ( h + 0.5 ) * ( width of a bin ) / (max_{int} + 1)
 return s
 ```
 *Here is the diagram for precision=8*
-![symmetric_kl](/Users/wuziheng/Desktop/september/nips-micronet/figures/symmetric_kl.png)
+![symmetric_kl](figures/symmetric_kl.png)
 
 ##### 1.3.1.2 Asymmetric KL-divergence based quantization
 
@@ -135,7 +135,7 @@ INT_{min} &= 0
 $$
 *Here is the diagram for precision=8*
 
-![asymmetric_kl](/Users/wuziheng/Desktop/september/nips-micronet/figures/asymmetric_kl.png)
+![asymmetric_kl](figures/asymmetric_kl.png)
 
 
 
@@ -154,13 +154,13 @@ s = \frac{max(fabs(X))}{2^{precision-1}-1}
 $$
 
 *Here is the diagram for precision=8*
-![maxvalue](/Users/wuziheng/Desktop/september/nips-micronet/figures/maxvalue.png)
+![maxvalue](figures/maxvalue.png)
 
 #### 1.3.2 Accumulation with FP16
 
 For common implementation of quantized matrix dot product, the accumulation part is still FP32 or INT32 to keep the performance.   Here is the **cudnn** implementation which use INT32 accumulation.
 
-![cudnn_conv](/Users/wuziheng/Desktop/september/nips-micronet/figures/cudnn_conv.png)
+![cudnn_conv](figures/cudnn_conv.png)
 
 In order to further accelerate accumulation process, we find that FP16 is accurate enough in modern neural network with normalization technology (e.g. BatchNorm, GroupNorm, ...). In this repo, we use cublas engine with FP16 dataType and computeType to conduct GEMM in Convolution operations.
 

@@ -14,8 +14,8 @@ layer {
   }
   image_data_param {
     source: "micronet-meta/val.txt"
-    # root_folder: "your dir path of validation data"
-    root_folder: "/share5/public/classification_data/imagenet1k/val/"
+    root_folder: "your dir path of validation data"
+    # root_folder: "/share5/public/classification_data/imagenet1k/val/"
     batch_size: 25
     short_edge: 256
   }

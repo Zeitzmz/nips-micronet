@@ -22,12 +22,12 @@ $ git clone https://github.com/Zeitzmz/nips-micronet.git --recursive
 $ cd nips-micronet && git submodule foreach git pull origin master
 $ cd micronet-caffe && make -j
 ```
-3.Test model
+3. Test model
 ``` 
 $ cd ../submit-model (change caffe_model/ProfitableNet.prototxt line18: root_folder: "your dir path of validation data") 
 $ ./test.sh (Testing 50000 validation images will last about 1 hour.)
 ```
-4.Calculate model score
+4. Calculate model score
 ```
 $ ./score.sh
 ``` 

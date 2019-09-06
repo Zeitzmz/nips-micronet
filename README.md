@@ -4,7 +4,7 @@
 
 By Mengze Zeng, Jie Hu, Ziheng Wu from [Momenta](https://www.momenta.ai/).
 
-All details about MicroNet Challenge are showed in [submit.pdf](https://github.com/Zeitzmz/nips-micronet/blob/master/main.pdf)
+All details about MicroNet Challenge are showed in [submit.pdf](https://github.com/Zeitzmz/nips-micronet/blob/master/submit.pdf)
 
 In this repository, we take [BVLC/Caffe](https://caffe.berkeleyvision.org/) to implement our algorithms for ImageNet tracking.
 
@@ -13,11 +13,11 @@ In this repository, we take [BVLC/Caffe](https://caffe.berkeleyvision.org/) to i
 
 
 # Run
-1.Download caffe
+1. Download caffe
 ```
 $ git clone https://github.com/Zeitzmz/nips-micronet.git --recursive
 ```
-2.Complile caffe
+2. Complile caffe
 ```
 $ cd nips-micronet && git submodule foreach git pull origin master
 $ cd micronet-caffe && make -j

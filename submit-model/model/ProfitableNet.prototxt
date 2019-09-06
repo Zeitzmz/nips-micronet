@@ -13,7 +13,7 @@ layer {
     mean_value: 123
   }
   image_data_param {
-    source: "micronet-meta/val.txt"
+    source: "file_lists/val.txt"
     root_folder: "your dir path of validation data"
     # root_folder: "/share2/classification_data/imagenet1k/val/"
     batch_size: 25

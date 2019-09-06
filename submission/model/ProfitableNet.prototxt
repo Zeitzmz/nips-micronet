@@ -14,10 +14,9 @@ layer {
   }
   image_data_param {
     source: "file_lists/val.txt"
-    root_folder: "your dir path of validation data"
-    # root_folder: "/share2/classification_data/imagenet1k/val/"
-    batch_size: 25
+    root_folder: "/share5/public/classification_data/imagenet1k/val/"
     short_edge: 256
+    batch_size: 50
   }
 }
 layer {

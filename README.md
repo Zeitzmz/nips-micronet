@@ -4,16 +4,16 @@
 
 By Mengze Zeng, Jie Hu, Ziheng Wu from [Momenta](https://www.momenta.ai/).
 
-All details about MicroNet Challenge are showed in [submit.pdf](https://github.com/Zeitzmz/nips-micronet/blob/master/submit.pdf)
+All details about the challenge are documented in [submision.pdf](https://github.com/Zeitzmz/nips-micronet/blob/master/submission.pdf)
 
-In this repository, we take [BVLC/Caffe](https://caffe.berkeleyvision.org/) to implement our algorithms for ImageNet tracking.
 
 # Requirements
-- install caffe environment (refer to https://github.com/BVLC/caffe)
+In this work, we take [BVLC/Caffe](https://caffe.berkeleyvision.org/) to implement our algorithms.
+- install caffe environment (refer to [caffe installation](https://caffe.berkeleyvision.org/installation.html)).
 
 
 # Run
-1. Download caffe
+1. Download project
 ```
 $ git clone https://github.com/Zeitzmz/nips-micronet.git --recursive
 ```
@@ -22,18 +22,15 @@ $ git clone https://github.com/Zeitzmz/nips-micronet.git --recursive
 $ cd nips-micronet && git submodule foreach git pull origin master
 $ cd micronet-caffe && make -j
 ```
-3. Test model
+3. Test submitted model & Scoring
 ``` 
-$ cd ../submit-model (change caffe_model/ProfitableNet.prototxt line18: root_folder: "your dir path of validation data") 
-$ ./test.sh (Testing 50000 validation images will last about 1 hour.)
+$ cd ../submit-model
+$ ./test.sh imagenet_validation_image_folder  # ./test.sh /data/imagenet1k/val/
+$ ./score.sh imagenet_validation_image_folder # ./score.sh /data/imagenet1k/val/
 ```
-4. Calculate model score
-```
-$ ./score.sh
-``` 
 
 # Score:
-- score: 0.25097 
+- Score: 0.25097 
 - Top-1: 75.21%
 - Top-5: 92.28%
 

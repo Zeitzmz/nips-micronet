@@ -9,7 +9,7 @@ All details about the challenge are documented in [submision.pdf](https://github
 
 # Requirements
 In this work, we take [BVLC/Caffe](https://caffe.berkeleyvision.org/) to implement our algorithms.
-- install caffe environment (refer to [caffe installation](https://caffe.berkeleyvision.org/installation.html)).
+- install caffe GPU environments (refer to [caffe installation](https://caffe.berkeleyvision.org/installation.html)).
 
 
 # Run

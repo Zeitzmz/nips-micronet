@@ -4,7 +4,7 @@
 
 By Mengze Zeng, Jie Hu, Ziheng Wu from [Momenta](https://www.momenta.ai/). 
 
-In this repository, we take [BVLC/Caffe](https://caffe.berkeleyvision.org/) to implement our algorithms.
+In this repository, we take [BVLC/Caffe](https://caffe.berkeleyvision.org/) to implement our algorithms for ImageNet tracking.
 
 # Requirements
 - install caffe (please reference https://github.com/BVLC/caffe)
@@ -21,3 +21,4 @@ In this repository, we take [BVLC/Caffe](https://caffe.berkeleyvision.org/) to i
 # Accuracy and score:
 - top1/top5: 75.21%/92.28%
 - score: 0.25097 
+- More details are showed in main.pdf.

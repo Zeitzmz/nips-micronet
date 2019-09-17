@@ -14,9 +14,10 @@ layer {
   }
   image_data_param {
     source: "file_lists/val.txt"
-    root_folder: "/share5/public/classification_data/imagenet1k/val/"
+    root_folder: "/share4/public/classification_data/imagenet1k/val/"
+    batch_size: 25
     short_edge: 256
-    batch_size: 50
+    
   }
 }
 layer {
@@ -30,8 +31,9 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
+    tolerance: 1.5
     positive: false
   }
 }
@@ -86,8 +88,9 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
+    tolerance: 1.5
     positive: true
   }
 }
@@ -143,8 +146,9 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
+    tolerance: 1.5
     positive: true
   }
 }
@@ -192,8 +196,9 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
+    tolerance: 1.5
     positive: false
   }
 }
@@ -247,8 +252,9 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
+    tolerance: 1.5
     positive: true
   }
 }
@@ -304,8 +310,9 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
+    tolerance: 1.5
     positive: true
   }
 }
@@ -353,8 +360,9 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
+    tolerance: 1.5
     positive: false
   }
 }
@@ -408,8 +416,9 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
+    tolerance: 1.5
     positive: true
   }
 }
@@ -465,8 +474,9 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
+    tolerance: 1.5
     positive: true
   }
 }
@@ -524,8 +534,9 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
+    tolerance: 1.5
     positive: false
   }
 }
@@ -563,8 +574,8 @@ layer {
   }
 }
 layer {
-  name: "conv4_0/1x1_increase/relu"
-  type: "ReLU"
+  name: "conv4_0/1x1_increase/hardswish"
+  type: "HardSwish"
   bottom: "conv4_0/1x1_increase/bn"
   top: "conv4_0/1x1_increase/bn"
 }
@@ -579,9 +590,10 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
-    positive: true
+    tolerance: 1.5
+    positive: false
   }
 }
 layer {
@@ -632,8 +644,8 @@ layer {
   }
 }
 layer {
-  name: "conv4_0/3x3_dwconv/slice_0/relu"
-  type: "ReLU"
+  name: "conv4_0/3x3_dwconv/slice_0/hardswish"
+  type: "HardSwish"
   bottom: "conv4_0/3x3_dwconv/slice_0/bn"
   top: "conv4_0/3x3_dwconv/slice_0/bn"
 }
@@ -673,8 +685,8 @@ layer {
   }
 }
 layer {
-  name: "conv4_0/3x3_dwconv/slice_1/relu"
-  type: "ReLU"
+  name: "conv4_0/3x3_dwconv/slice_1/hardswish"
+  type: "HardSwish"
   bottom: "conv4_0/3x3_dwconv/slice_1/bn"
   top: "conv4_0/3x3_dwconv/slice_1/bn"
 }
@@ -714,8 +726,8 @@ layer {
   }
 }
 layer {
-  name: "conv4_0/3x3_dwconv/slice_2/relu"
-  type: "ReLU"
+  name: "conv4_0/3x3_dwconv/slice_2/hardswish"
+  type: "HardSwish"
   bottom: "conv4_0/3x3_dwconv/slice_2/bn"
   top: "conv4_0/3x3_dwconv/slice_2/bn"
 }
@@ -738,9 +750,10 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
-    positive: true
+    tolerance: 1.5
+    positive: false
   }
 }
 layer {
@@ -755,9 +768,28 @@ layer {
   }
 }
 layer {
+  name: "conv4_0/3x3_dwconv/SE_bn"
+  type: "Scale"
+  bottom: "conv4_0/3x3_dwconv/SE_global_pool"
+  top: "conv4_0/3x3_dwconv/SE_bn"
+  param {
+    lr_mult: 1
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  scale_param {
+    axis: 1
+    num_axes: 1
+    bias_term: true
+  }
+}
+layer {
   name: "conv4_0/3x3_dwconv/SE_fc1"
   type: "Convolution"
-  bottom: "conv4_0/3x3_dwconv/SE_global_pool"
+  bottom: "conv4_0/3x3_dwconv/SE_bn"
   top: "conv4_0/3x3_dwconv/SE_fc1"
   param {
     lr_mult: 1
@@ -852,8 +884,9 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
+    tolerance: 1.5
     positive: false
   }
 }
@@ -901,8 +934,9 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
+    tolerance: 1.5
     positive: false
   }
 }
@@ -940,8 +974,8 @@ layer {
   }
 }
 layer {
-  name: "conv4_1/1x1_increase/relu"
-  type: "ReLU"
+  name: "conv4_1/1x1_increase/hardswish"
+  type: "HardSwish"
   bottom: "conv4_1/1x1_increase/bn"
   top: "conv4_1/1x1_increase/bn"
 }
@@ -956,9 +990,10 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
-    positive: true
+    tolerance: 1.5
+    positive: false
   }
 }
 layer {
@@ -1007,8 +1042,8 @@ layer {
   }
 }
 layer {
-  name: "conv4_1/3x3_dwconv/slice_0/relu"
-  type: "ReLU"
+  name: "conv4_1/3x3_dwconv/slice_0/hardswish"
+  type: "HardSwish"
   bottom: "conv4_1/3x3_dwconv/slice_0/bn"
   top: "conv4_1/3x3_dwconv/slice_0/bn"
 }
@@ -1048,8 +1083,8 @@ layer {
   }
 }
 layer {
-  name: "conv4_1/3x3_dwconv/slice_1/relu"
-  type: "ReLU"
+  name: "conv4_1/3x3_dwconv/slice_1/hardswish"
+  type: "HardSwish"
   bottom: "conv4_1/3x3_dwconv/slice_1/bn"
   top: "conv4_1/3x3_dwconv/slice_1/bn"
 }
@@ -1071,9 +1106,10 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
-    positive: true
+    tolerance: 1.5
+    positive: false
   }
 }
 layer {
@@ -1088,9 +1124,28 @@ layer {
   }
 }
 layer {
+  name: "conv4_1/3x3_dwconv/SE_bn"
+  type: "Scale"
+  bottom: "conv4_1/3x3_dwconv/SE_global_pool"
+  top: "conv4_1/3x3_dwconv/SE_bn"
+  param {
+    lr_mult: 1
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  scale_param {
+    axis: 1
+    num_axes: 1
+    bias_term: true
+  }
+}
+layer {
   name: "conv4_1/3x3_dwconv/SE_fc1"
   type: "Convolution"
-  bottom: "conv4_1/3x3_dwconv/SE_global_pool"
+  bottom: "conv4_1/3x3_dwconv/SE_bn"
   top: "conv4_1/3x3_dwconv/SE_fc1"
   param {
     lr_mult: 1
@@ -1185,8 +1240,9 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
+    tolerance: 1.5
     positive: false
   }
 }
@@ -1244,8 +1300,9 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
+    tolerance: 1.5
     positive: false
   }
 }
@@ -1283,8 +1340,8 @@ layer {
   }
 }
 layer {
-  name: "conv4_2/1x1_increase/relu"
-  type: "ReLU"
+  name: "conv4_2/1x1_increase/hardswish"
+  type: "HardSwish"
   bottom: "conv4_2/1x1_increase/bn"
   top: "conv4_2/1x1_increase/bn"
 }
@@ -1299,9 +1356,10 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
-    positive: true
+    tolerance: 1.5
+    positive: false
   }
 }
 layer {
@@ -1350,8 +1408,8 @@ layer {
   }
 }
 layer {
-  name: "conv4_2/3x3_dwconv/slice_0/relu"
-  type: "ReLU"
+  name: "conv4_2/3x3_dwconv/slice_0/hardswish"
+  type: "HardSwish"
   bottom: "conv4_2/3x3_dwconv/slice_0/bn"
   top: "conv4_2/3x3_dwconv/slice_0/bn"
 }
@@ -1391,8 +1449,8 @@ layer {
   }
 }
 layer {
-  name: "conv4_2/3x3_dwconv/slice_1/relu"
-  type: "ReLU"
+  name: "conv4_2/3x3_dwconv/slice_1/hardswish"
+  type: "HardSwish"
   bottom: "conv4_2/3x3_dwconv/slice_1/bn"
   top: "conv4_2/3x3_dwconv/slice_1/bn"
 }
@@ -1414,9 +1472,10 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
-    positive: true
+    tolerance: 1.5
+    positive: false
   }
 }
 layer {
@@ -1431,9 +1490,28 @@ layer {
   }
 }
 layer {
+  name: "conv4_2/3x3_dwconv/SE_bn"
+  type: "Scale"
+  bottom: "conv4_2/3x3_dwconv/SE_global_pool"
+  top: "conv4_2/3x3_dwconv/SE_bn"
+  param {
+    lr_mult: 1
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  scale_param {
+    axis: 1
+    num_axes: 1
+    bias_term: true
+  }
+}
+layer {
   name: "conv4_2/3x3_dwconv/SE_fc1"
   type: "Convolution"
-  bottom: "conv4_2/3x3_dwconv/SE_global_pool"
+  bottom: "conv4_2/3x3_dwconv/SE_bn"
   top: "conv4_2/3x3_dwconv/SE_fc1"
   param {
     lr_mult: 1
@@ -1528,8 +1606,9 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
+    tolerance: 1.5
     positive: false
   }
 }
@@ -1587,8 +1666,9 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
+    tolerance: 1.5
     positive: false
   }
 }
@@ -1626,8 +1706,8 @@ layer {
   }
 }
 layer {
-  name: "conv4_3/1x1_increase/relu"
-  type: "ReLU"
+  name: "conv4_3/1x1_increase/hardswish"
+  type: "HardSwish"
   bottom: "conv4_3/1x1_increase/bn"
   top: "conv4_3/1x1_increase/bn"
 }
@@ -1642,9 +1722,10 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
-    positive: true
+    tolerance: 1.5
+    positive: false
   }
 }
 layer {
@@ -1693,8 +1774,8 @@ layer {
   }
 }
 layer {
-  name: "conv4_3/3x3_dwconv/slice_0/relu"
-  type: "ReLU"
+  name: "conv4_3/3x3_dwconv/slice_0/hardswish"
+  type: "HardSwish"
   bottom: "conv4_3/3x3_dwconv/slice_0/bn"
   top: "conv4_3/3x3_dwconv/slice_0/bn"
 }
@@ -1734,8 +1815,8 @@ layer {
   }
 }
 layer {
-  name: "conv4_3/3x3_dwconv/slice_1/relu"
-  type: "ReLU"
+  name: "conv4_3/3x3_dwconv/slice_1/hardswish"
+  type: "HardSwish"
   bottom: "conv4_3/3x3_dwconv/slice_1/bn"
   top: "conv4_3/3x3_dwconv/slice_1/bn"
 }
@@ -1757,9 +1838,10 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
-    positive: true
+    tolerance: 1.5
+    positive: false
   }
 }
 layer {
@@ -1774,9 +1856,28 @@ layer {
   }
 }
 layer {
+  name: "conv4_3/3x3_dwconv/SE_bn"
+  type: "Scale"
+  bottom: "conv4_3/3x3_dwconv/SE_global_pool"
+  top: "conv4_3/3x3_dwconv/SE_bn"
+  param {
+    lr_mult: 1
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  scale_param {
+    axis: 1
+    num_axes: 1
+    bias_term: true
+  }
+}
+layer {
   name: "conv4_3/3x3_dwconv/SE_fc1"
   type: "Convolution"
-  bottom: "conv4_3/3x3_dwconv/SE_global_pool"
+  bottom: "conv4_3/3x3_dwconv/SE_bn"
   top: "conv4_3/3x3_dwconv/SE_fc1"
   param {
     lr_mult: 1
@@ -1871,8 +1972,9 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
+    tolerance: 1.5
     positive: false
   }
 }
@@ -1930,8 +2032,9 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
+    tolerance: 1.5
     positive: false
   }
 }
@@ -1969,8 +2072,8 @@ layer {
   }
 }
 layer {
-  name: "conv5_0/1x1_increase/relu"
-  type: "ReLU"
+  name: "conv5_0/1x1_increase/hardswish"
+  type: "HardSwish"
   bottom: "conv5_0/1x1_increase/bn"
   top: "conv5_0/1x1_increase/bn"
 }
@@ -1985,9 +2088,10 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
-    positive: true
+    tolerance: 1.5
+    positive: false
   }
 }
 layer {
@@ -2038,8 +2142,8 @@ layer {
   }
 }
 layer {
-  name: "conv5_0/3x3_dwconv/slice_0/relu"
-  type: "ReLU"
+  name: "conv5_0/3x3_dwconv/slice_0/hardswish"
+  type: "HardSwish"
   bottom: "conv5_0/3x3_dwconv/slice_0/bn"
   top: "conv5_0/3x3_dwconv/slice_0/bn"
 }
@@ -2079,8 +2183,8 @@ layer {
   }
 }
 layer {
-  name: "conv5_0/3x3_dwconv/slice_1/relu"
-  type: "ReLU"
+  name: "conv5_0/3x3_dwconv/slice_1/hardswish"
+  type: "HardSwish"
   bottom: "conv5_0/3x3_dwconv/slice_1/bn"
   top: "conv5_0/3x3_dwconv/slice_1/bn"
 }
@@ -2120,8 +2224,8 @@ layer {
   }
 }
 layer {
-  name: "conv5_0/3x3_dwconv/slice_2/relu"
-  type: "ReLU"
+  name: "conv5_0/3x3_dwconv/slice_2/hardswish"
+  type: "HardSwish"
   bottom: "conv5_0/3x3_dwconv/slice_2/bn"
   top: "conv5_0/3x3_dwconv/slice_2/bn"
 }
@@ -2144,9 +2248,10 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
-    positive: true
+    tolerance: 1.5
+    positive: false
   }
 }
 layer {
@@ -2161,9 +2266,28 @@ layer {
   }
 }
 layer {
+  name: "conv5_0/3x3_dwconv/SE_bn"
+  type: "Scale"
+  bottom: "conv5_0/3x3_dwconv/SE_global_pool"
+  top: "conv5_0/3x3_dwconv/SE_bn"
+  param {
+    lr_mult: 1
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  scale_param {
+    axis: 1
+    num_axes: 1
+    bias_term: true
+  }
+}
+layer {
   name: "conv5_0/3x3_dwconv/SE_fc1"
   type: "Convolution"
-  bottom: "conv5_0/3x3_dwconv/SE_global_pool"
+  bottom: "conv5_0/3x3_dwconv/SE_bn"
   top: "conv5_0/3x3_dwconv/SE_fc1"
   param {
     lr_mult: 1
@@ -2258,8 +2382,9 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
+    tolerance: 1.5
     positive: false
   }
 }
@@ -2307,8 +2432,9 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
+    tolerance: 1.5
     positive: false
   }
 }
@@ -2346,8 +2472,8 @@ layer {
   }
 }
 layer {
-  name: "conv5_1/1x1_increase/relu"
-  type: "ReLU"
+  name: "conv5_1/1x1_increase/hardswish"
+  type: "HardSwish"
   bottom: "conv5_1/1x1_increase/bn"
   top: "conv5_1/1x1_increase/bn"
 }
@@ -2362,9 +2488,10 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
-    positive: true
+    tolerance: 1.5
+    positive: false
   }
 }
 layer {
@@ -2413,8 +2540,8 @@ layer {
   }
 }
 layer {
-  name: "conv5_1/3x3_dwconv/slice_0/relu"
-  type: "ReLU"
+  name: "conv5_1/3x3_dwconv/slice_0/hardswish"
+  type: "HardSwish"
   bottom: "conv5_1/3x3_dwconv/slice_0/bn"
   top: "conv5_1/3x3_dwconv/slice_0/bn"
 }
@@ -2454,8 +2581,8 @@ layer {
   }
 }
 layer {
-  name: "conv5_1/3x3_dwconv/slice_1/relu"
-  type: "ReLU"
+  name: "conv5_1/3x3_dwconv/slice_1/hardswish"
+  type: "HardSwish"
   bottom: "conv5_1/3x3_dwconv/slice_1/bn"
   top: "conv5_1/3x3_dwconv/slice_1/bn"
 }
@@ -2477,9 +2604,10 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
-    positive: true
+    tolerance: 1.5
+    positive: false
   }
 }
 layer {
@@ -2494,9 +2622,28 @@ layer {
   }
 }
 layer {
+  name: "conv5_1/3x3_dwconv/SE_bn"
+  type: "Scale"
+  bottom: "conv5_1/3x3_dwconv/SE_global_pool"
+  top: "conv5_1/3x3_dwconv/SE_bn"
+  param {
+    lr_mult: 1
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  scale_param {
+    axis: 1
+    num_axes: 1
+    bias_term: true
+  }
+}
+layer {
   name: "conv5_1/3x3_dwconv/SE_fc1"
   type: "Convolution"
-  bottom: "conv5_1/3x3_dwconv/SE_global_pool"
+  bottom: "conv5_1/3x3_dwconv/SE_bn"
   top: "conv5_1/3x3_dwconv/SE_fc1"
   param {
     lr_mult: 1
@@ -2591,8 +2738,9 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
+    tolerance: 1.5
     positive: false
   }
 }
@@ -2650,8 +2798,9 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
+    tolerance: 1.5
     positive: false
   }
 }
@@ -2689,8 +2838,8 @@ layer {
   }
 }
 layer {
-  name: "conv5_2/1x1_increase/relu"
-  type: "ReLU"
+  name: "conv5_2/1x1_increase/hardswish"
+  type: "HardSwish"
   bottom: "conv5_2/1x1_increase/bn"
   top: "conv5_2/1x1_increase/bn"
 }
@@ -2705,9 +2854,10 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
-    positive: true
+    tolerance: 1.5
+    positive: false
   }
 }
 layer {
@@ -2756,8 +2906,8 @@ layer {
   }
 }
 layer {
-  name: "conv5_2/3x3_dwconv/slice_0/relu"
-  type: "ReLU"
+  name: "conv5_2/3x3_dwconv/slice_0/hardswish"
+  type: "HardSwish"
   bottom: "conv5_2/3x3_dwconv/slice_0/bn"
   top: "conv5_2/3x3_dwconv/slice_0/bn"
 }
@@ -2797,8 +2947,8 @@ layer {
   }
 }
 layer {
-  name: "conv5_2/3x3_dwconv/slice_1/relu"
-  type: "ReLU"
+  name: "conv5_2/3x3_dwconv/slice_1/hardswish"
+  type: "HardSwish"
   bottom: "conv5_2/3x3_dwconv/slice_1/bn"
   top: "conv5_2/3x3_dwconv/slice_1/bn"
 }
@@ -2820,9 +2970,10 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
-    positive: true
+    tolerance: 1.5
+    positive: false
   }
 }
 layer {
@@ -2837,9 +2988,28 @@ layer {
   }
 }
 layer {
+  name: "conv5_2/3x3_dwconv/SE_bn"
+  type: "Scale"
+  bottom: "conv5_2/3x3_dwconv/SE_global_pool"
+  top: "conv5_2/3x3_dwconv/SE_bn"
+  param {
+    lr_mult: 1
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  scale_param {
+    axis: 1
+    num_axes: 1
+    bias_term: true
+  }
+}
+layer {
   name: "conv5_2/3x3_dwconv/SE_fc1"
   type: "Convolution"
-  bottom: "conv5_2/3x3_dwconv/SE_global_pool"
+  bottom: "conv5_2/3x3_dwconv/SE_bn"
   top: "conv5_2/3x3_dwconv/SE_fc1"
   param {
     lr_mult: 1
@@ -2934,8 +3104,9 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
+    tolerance: 1.5
     positive: false
   }
 }
@@ -2993,8 +3164,9 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
+    tolerance: 1.5
     positive: false
   }
 }
@@ -3032,8 +3204,8 @@ layer {
   }
 }
 layer {
-  name: "conv5_3/1x1_increase/relu"
-  type: "ReLU"
+  name: "conv5_3/1x1_increase/hardswish"
+  type: "HardSwish"
   bottom: "conv5_3/1x1_increase/bn"
   top: "conv5_3/1x1_increase/bn"
 }
@@ -3048,9 +3220,10 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
-    positive: true
+    tolerance: 1.5
+    positive: false
   }
 }
 layer {
@@ -3099,8 +3272,8 @@ layer {
   }
 }
 layer {
-  name: "conv5_3/3x3_dwconv/slice_0/relu"
-  type: "ReLU"
+  name: "conv5_3/3x3_dwconv/slice_0/hardswish"
+  type: "HardSwish"
   bottom: "conv5_3/3x3_dwconv/slice_0/bn"
   top: "conv5_3/3x3_dwconv/slice_0/bn"
 }
@@ -3140,8 +3313,8 @@ layer {
   }
 }
 layer {
-  name: "conv5_3/3x3_dwconv/slice_1/relu"
-  type: "ReLU"
+  name: "conv5_3/3x3_dwconv/slice_1/hardswish"
+  type: "HardSwish"
   bottom: "conv5_3/3x3_dwconv/slice_1/bn"
   top: "conv5_3/3x3_dwconv/slice_1/bn"
 }
@@ -3163,9 +3336,10 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
-    positive: true
+    tolerance: 1.5
+    positive: false
   }
 }
 layer {
@@ -3180,9 +3354,28 @@ layer {
   }
 }
 layer {
+  name: "conv5_3/3x3_dwconv/SE_bn"
+  type: "Scale"
+  bottom: "conv5_3/3x3_dwconv/SE_global_pool"
+  top: "conv5_3/3x3_dwconv/SE_bn"
+  param {
+    lr_mult: 1
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  scale_param {
+    axis: 1
+    num_axes: 1
+    bias_term: true
+  }
+}
+layer {
   name: "conv5_3/3x3_dwconv/SE_fc1"
   type: "Convolution"
-  bottom: "conv5_3/3x3_dwconv/SE_global_pool"
+  bottom: "conv5_3/3x3_dwconv/SE_bn"
   top: "conv5_3/3x3_dwconv/SE_fc1"
   param {
     lr_mult: 1
@@ -3277,8 +3470,9 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
+    tolerance: 1.5
     positive: false
   }
 }
@@ -3336,8 +3530,9 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
+    tolerance: 1.5
     positive: false
   }
 }
@@ -3375,8 +3570,8 @@ layer {
   }
 }
 layer {
-  name: "conv6_0/1x1_increase/relu"
-  type: "ReLU"
+  name: "conv6_0/1x1_increase/hardswish"
+  type: "HardSwish"
   bottom: "conv6_0/1x1_increase/bn"
   top: "conv6_0/1x1_increase/bn"
 }
@@ -3391,9 +3586,10 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
-    positive: true
+    tolerance: 1.5
+    positive: false
   }
 }
 layer {
@@ -3444,8 +3640,8 @@ layer {
   }
 }
 layer {
-  name: "conv6_0/3x3_dwconv/slice_0/relu"
-  type: "ReLU"
+  name: "conv6_0/3x3_dwconv/slice_0/hardswish"
+  type: "HardSwish"
   bottom: "conv6_0/3x3_dwconv/slice_0/bn"
   top: "conv6_0/3x3_dwconv/slice_0/bn"
 }
@@ -3485,8 +3681,8 @@ layer {
   }
 }
 layer {
-  name: "conv6_0/3x3_dwconv/slice_1/relu"
-  type: "ReLU"
+  name: "conv6_0/3x3_dwconv/slice_1/hardswish"
+  type: "HardSwish"
   bottom: "conv6_0/3x3_dwconv/slice_1/bn"
   top: "conv6_0/3x3_dwconv/slice_1/bn"
 }
@@ -3526,8 +3722,8 @@ layer {
   }
 }
 layer {
-  name: "conv6_0/3x3_dwconv/slice_2/relu"
-  type: "ReLU"
+  name: "conv6_0/3x3_dwconv/slice_2/hardswish"
+  type: "HardSwish"
   bottom: "conv6_0/3x3_dwconv/slice_2/bn"
   top: "conv6_0/3x3_dwconv/slice_2/bn"
 }
@@ -3550,9 +3746,10 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
-    positive: true
+    tolerance: 1.5
+    positive: false
   }
 }
 layer {
@@ -3567,9 +3764,28 @@ layer {
   }
 }
 layer {
+  name: "conv6_0/3x3_dwconv/SE_bn"
+  type: "Scale"
+  bottom: "conv6_0/3x3_dwconv/SE_global_pool"
+  top: "conv6_0/3x3_dwconv/SE_bn"
+  param {
+    lr_mult: 1
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  scale_param {
+    axis: 1
+    num_axes: 1
+    bias_term: true
+  }
+}
+layer {
   name: "conv6_0/3x3_dwconv/SE_fc1"
   type: "Convolution"
-  bottom: "conv6_0/3x3_dwconv/SE_global_pool"
+  bottom: "conv6_0/3x3_dwconv/SE_bn"
   top: "conv6_0/3x3_dwconv/SE_fc1"
   param {
     lr_mult: 1
@@ -3664,8 +3880,9 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
+    tolerance: 1.5
     positive: false
   }
 }
@@ -3713,8 +3930,9 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
+    tolerance: 1.5
     positive: false
   }
 }
@@ -3752,8 +3970,8 @@ layer {
   }
 }
 layer {
-  name: "conv6_1/1x1_increase/relu"
-  type: "ReLU"
+  name: "conv6_1/1x1_increase/hardswish"
+  type: "HardSwish"
   bottom: "conv6_1/1x1_increase/bn"
   top: "conv6_1/1x1_increase/bn"
 }
@@ -3768,9 +3986,10 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
-    positive: true
+    tolerance: 1.5
+    positive: false
   }
 }
 layer {
@@ -3821,8 +4040,8 @@ layer {
   }
 }
 layer {
-  name: "conv6_1/3x3_dwconv/slice_0/relu"
-  type: "ReLU"
+  name: "conv6_1/3x3_dwconv/slice_0/hardswish"
+  type: "HardSwish"
   bottom: "conv6_1/3x3_dwconv/slice_0/bn"
   top: "conv6_1/3x3_dwconv/slice_0/bn"
 }
@@ -3862,8 +4081,8 @@ layer {
   }
 }
 layer {
-  name: "conv6_1/3x3_dwconv/slice_1/relu"
-  type: "ReLU"
+  name: "conv6_1/3x3_dwconv/slice_1/hardswish"
+  type: "HardSwish"
   bottom: "conv6_1/3x3_dwconv/slice_1/bn"
   top: "conv6_1/3x3_dwconv/slice_1/bn"
 }
@@ -3903,8 +4122,8 @@ layer {
   }
 }
 layer {
-  name: "conv6_1/3x3_dwconv/slice_2/relu"
-  type: "ReLU"
+  name: "conv6_1/3x3_dwconv/slice_2/hardswish"
+  type: "HardSwish"
   bottom: "conv6_1/3x3_dwconv/slice_2/bn"
   top: "conv6_1/3x3_dwconv/slice_2/bn"
 }
@@ -3927,9 +4146,10 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
-    positive: true
+    tolerance: 1.5
+    positive: false
   }
 }
 layer {
@@ -3944,9 +4164,28 @@ layer {
   }
 }
 layer {
+  name: "conv6_1/3x3_dwconv/SE_bn"
+  type: "Scale"
+  bottom: "conv6_1/3x3_dwconv/SE_global_pool"
+  top: "conv6_1/3x3_dwconv/SE_bn"
+  param {
+    lr_mult: 1
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  scale_param {
+    axis: 1
+    num_axes: 1
+    bias_term: true
+  }
+}
+layer {
   name: "conv6_1/3x3_dwconv/SE_fc1"
   type: "Convolution"
-  bottom: "conv6_1/3x3_dwconv/SE_global_pool"
+  bottom: "conv6_1/3x3_dwconv/SE_bn"
   top: "conv6_1/3x3_dwconv/SE_fc1"
   param {
     lr_mult: 1
@@ -4041,8 +4280,9 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
+    tolerance: 1.5
     positive: false
   }
 }
@@ -4100,8 +4340,9 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
+    tolerance: 1.5
     positive: false
   }
 }
@@ -4139,8 +4380,8 @@ layer {
   }
 }
 layer {
-  name: "conv6_2/1x1_increase/relu"
-  type: "ReLU"
+  name: "conv6_2/1x1_increase/hardswish"
+  type: "HardSwish"
   bottom: "conv6_2/1x1_increase/bn"
   top: "conv6_2/1x1_increase/bn"
 }
@@ -4155,9 +4396,10 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
-    positive: true
+    tolerance: 1.5
+    positive: false
   }
 }
 layer {
@@ -4208,8 +4450,8 @@ layer {
   }
 }
 layer {
-  name: "conv6_2/3x3_dwconv/slice_0/relu"
-  type: "ReLU"
+  name: "conv6_2/3x3_dwconv/slice_0/hardswish"
+  type: "HardSwish"
   bottom: "conv6_2/3x3_dwconv/slice_0/bn"
   top: "conv6_2/3x3_dwconv/slice_0/bn"
 }
@@ -4249,8 +4491,8 @@ layer {
   }
 }
 layer {
-  name: "conv6_2/3x3_dwconv/slice_1/relu"
-  type: "ReLU"
+  name: "conv6_2/3x3_dwconv/slice_1/hardswish"
+  type: "HardSwish"
   bottom: "conv6_2/3x3_dwconv/slice_1/bn"
   top: "conv6_2/3x3_dwconv/slice_1/bn"
 }
@@ -4290,8 +4532,8 @@ layer {
   }
 }
 layer {
-  name: "conv6_2/3x3_dwconv/slice_2/relu"
-  type: "ReLU"
+  name: "conv6_2/3x3_dwconv/slice_2/hardswish"
+  type: "HardSwish"
   bottom: "conv6_2/3x3_dwconv/slice_2/bn"
   top: "conv6_2/3x3_dwconv/slice_2/bn"
 }
@@ -4314,9 +4556,10 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
-    positive: true
+    tolerance: 1.5
+    positive: false
   }
 }
 layer {
@@ -4331,9 +4574,28 @@ layer {
   }
 }
 layer {
+  name: "conv6_2/3x3_dwconv/SE_bn"
+  type: "Scale"
+  bottom: "conv6_2/3x3_dwconv/SE_global_pool"
+  top: "conv6_2/3x3_dwconv/SE_bn"
+  param {
+    lr_mult: 1
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  scale_param {
+    axis: 1
+    num_axes: 1
+    bias_term: true
+  }
+}
+layer {
   name: "conv6_2/3x3_dwconv/SE_fc1"
   type: "Convolution"
-  bottom: "conv6_2/3x3_dwconv/SE_global_pool"
+  bottom: "conv6_2/3x3_dwconv/SE_bn"
   top: "conv6_2/3x3_dwconv/SE_fc1"
   param {
     lr_mult: 1
@@ -4428,8 +4690,9 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
+    tolerance: 1.5
     positive: false
   }
 }
@@ -4487,8 +4750,9 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
+    tolerance: 1.5
     positive: false
   }
 }
@@ -4526,8 +4790,8 @@ layer {
   }
 }
 layer {
-  name: "conv6_3/1x1_increase/relu"
-  type: "ReLU"
+  name: "conv6_3/1x1_increase/hardswish"
+  type: "HardSwish"
   bottom: "conv6_3/1x1_increase/bn"
   top: "conv6_3/1x1_increase/bn"
 }
@@ -4542,9 +4806,10 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
-    positive: true
+    tolerance: 1.5
+    positive: false
   }
 }
 layer {
@@ -4595,8 +4860,8 @@ layer {
   }
 }
 layer {
-  name: "conv6_3/3x3_dwconv/slice_0/relu"
-  type: "ReLU"
+  name: "conv6_3/3x3_dwconv/slice_0/hardswish"
+  type: "HardSwish"
   bottom: "conv6_3/3x3_dwconv/slice_0/bn"
   top: "conv6_3/3x3_dwconv/slice_0/bn"
 }
@@ -4636,8 +4901,8 @@ layer {
   }
 }
 layer {
-  name: "conv6_3/3x3_dwconv/slice_1/relu"
-  type: "ReLU"
+  name: "conv6_3/3x3_dwconv/slice_1/hardswish"
+  type: "HardSwish"
   bottom: "conv6_3/3x3_dwconv/slice_1/bn"
   top: "conv6_3/3x3_dwconv/slice_1/bn"
 }
@@ -4677,8 +4942,8 @@ layer {
   }
 }
 layer {
-  name: "conv6_3/3x3_dwconv/slice_2/relu"
-  type: "ReLU"
+  name: "conv6_3/3x3_dwconv/slice_2/hardswish"
+  type: "HardSwish"
   bottom: "conv6_3/3x3_dwconv/slice_2/bn"
   top: "conv6_3/3x3_dwconv/slice_2/bn"
 }
@@ -4701,9 +4966,10 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
-    positive: true
+    tolerance: 1.5
+    positive: false
   }
 }
 layer {
@@ -4718,9 +4984,28 @@ layer {
   }
 }
 layer {
+  name: "conv6_3/3x3_dwconv/SE_bn"
+  type: "Scale"
+  bottom: "conv6_3/3x3_dwconv/SE_global_pool"
+  top: "conv6_3/3x3_dwconv/SE_bn"
+  param {
+    lr_mult: 1
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  scale_param {
+    axis: 1
+    num_axes: 1
+    bias_term: true
+  }
+}
+layer {
   name: "conv6_3/3x3_dwconv/SE_fc1"
   type: "Convolution"
-  bottom: "conv6_3/3x3_dwconv/SE_global_pool"
+  bottom: "conv6_3/3x3_dwconv/SE_bn"
   top: "conv6_3/3x3_dwconv/SE_fc1"
   param {
     lr_mult: 1
@@ -4815,8 +5100,9 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
+    tolerance: 1.5
     positive: false
   }
 }
@@ -4874,15 +5160,836 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
+    tolerance: 1.5
+    positive: false
+  }
+}
+layer {
+  name: "conv6_4/1x1_increase"
+  type: "Convolution"
+  bottom: "conv6_3/elt_sum"
+  top: "conv6_4/1x1_increase/bn"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    engine: CAFFE
+    fp16_accumulation: true
+    num_output: 288
+    bias_term: true
+    kernel_size: 1
+    stride: 1
+    weight_filler {
+      type: "msra"
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+  quantize_param {
+    precision: 8
+    channel_shared: false
+  }
+}
+layer {
+  name: "conv6_4/1x1_increase/hardswish"
+  type: "HardSwish"
+  bottom: "conv6_4/1x1_increase/bn"
+  top: "conv6_4/1x1_increase/bn"
+}
+layer {
+  name: "conv6_4/1x1_increase/bn_fixed_point"
+  type: "Quantize"
+  bottom: "conv6_4/1x1_increase/bn"
+  top: "conv6_4/1x1_increase/bn"
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  quantize_param {
+    precision: 8
+    
+    frozen: true
+    tolerance: 1.5
+    positive: false
+  }
+}
+layer {
+  name: "conv6_4/1x1_increase/slice"
+  type: "Slice"
+  bottom: "conv6_4/1x1_increase/bn"
+  top: "conv6_4/1x1_increase/split1"
+  top: "conv6_4/1x1_increase/split2"
+  top: "conv6_4/1x1_increase/split3"
+  slice_param {
+    slice_point: 96
+    slice_point: 192
+  }
+}
+layer {
+  name: "conv6_4/3x3_dwconv/slice_0"
+  type: "Convolution"
+  bottom: "conv6_4/1x1_increase/split1"
+  top: "conv6_4/3x3_dwconv/slice_0/bn"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    engine: CAFFE
+    fp16_accumulation: true
+    num_output: 96
+    bias_term: true
+    pad: 1
+    kernel_size: 3
+    group: 96
+    stride: 1
+    weight_filler {
+      type: "msra"
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+  quantize_param {
+    precision: 8
+    channel_shared: false
+  }
+}
+layer {
+  name: "conv6_4/3x3_dwconv/slice_0/hardswish"
+  type: "HardSwish"
+  bottom: "conv6_4/3x3_dwconv/slice_0/bn"
+  top: "conv6_4/3x3_dwconv/slice_0/bn"
+}
+layer {
+  name: "conv6_4/3x3_dwconv/slice_1"
+  type: "Convolution"
+  bottom: "conv6_4/1x1_increase/split2"
+  top: "conv6_4/3x3_dwconv/slice_1/bn"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    engine: CAFFE
+    fp16_accumulation: true
+    num_output: 96
+    bias_term: true
+    pad: 2
+    kernel_size: 5
+    group: 96
+    stride: 1
+    weight_filler {
+      type: "msra"
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+  quantize_param {
+    precision: 8
+    channel_shared: false
+  }
+}
+layer {
+  name: "conv6_4/3x3_dwconv/slice_1/hardswish"
+  type: "HardSwish"
+  bottom: "conv6_4/3x3_dwconv/slice_1/bn"
+  top: "conv6_4/3x3_dwconv/slice_1/bn"
+}
+layer {
+  name: "conv6_4/3x3_dwconv/slice_2"
+  type: "Convolution"
+  bottom: "conv6_4/1x1_increase/split3"
+  top: "conv6_4/3x3_dwconv/slice_2/bn"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    engine: CAFFE
+    fp16_accumulation: true
+    num_output: 96
+    bias_term: true
+    pad: 3
+    kernel_size: 7
+    group: 96
+    stride: 1
+    weight_filler {
+      type: "msra"
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+  quantize_param {
+    precision: 8
+    channel_shared: false
+  }
+}
+layer {
+  name: "conv6_4/3x3_dwconv/slice_2/hardswish"
+  type: "HardSwish"
+  bottom: "conv6_4/3x3_dwconv/slice_2/bn"
+  top: "conv6_4/3x3_dwconv/slice_2/bn"
+}
+layer {
+  name: "conv6_4/3x3_dwconv/concat"
+  type: "Concat"
+  bottom: "conv6_4/3x3_dwconv/slice_0/bn"
+  bottom: "conv6_4/3x3_dwconv/slice_1/bn"
+  bottom: "conv6_4/3x3_dwconv/slice_2/bn"
+  top: "conv6_4/3x3_dwconv/concat"
+}
+layer {
+  name: "conv6_4/3x3_dwconv/concat_fixed_point"
+  type: "Quantize"
+  bottom: "conv6_4/3x3_dwconv/concat"
+  top: "conv6_4/3x3_dwconv/concat"
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  quantize_param {
+    precision: 8
+    
+    frozen: true
+    tolerance: 1.5
+    positive: false
+  }
+}
+layer {
+  name: "conv6_4/3x3_dwconv/SE_global_pool"
+  type: "Pooling"
+  bottom: "conv6_4/3x3_dwconv/concat"
+  top: "conv6_4/3x3_dwconv/SE_global_pool"
+  pooling_param {
+    pool: AVE
+    engine: CAFFE
+    global_pooling: true
+  }
+}
+layer {
+  name: "conv6_4/3x3_dwconv/SE_bn"
+  type: "Scale"
+  bottom: "conv6_4/3x3_dwconv/SE_global_pool"
+  top: "conv6_4/3x3_dwconv/SE_bn"
+  param {
+    lr_mult: 1
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  scale_param {
+    axis: 1
+    num_axes: 1
+    bias_term: true
+  }
+}
+layer {
+  name: "conv6_4/3x3_dwconv/SE_fc1"
+  type: "Convolution"
+  bottom: "conv6_4/3x3_dwconv/SE_bn"
+  top: "conv6_4/3x3_dwconv/SE_fc1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  convolution_param {
+    engine: CAFFE
+    fp16_accumulation: true
+    num_output: 18
+    bias_term: false
+    kernel_size: 1
+    stride: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+  }
+  quantize_param {
+    precision: 8
+    channel_shared: false
+  }
+}
+layer {
+  name: "conv6_4/3x3_dwconv/SE_fc1/relu"
+  type: "ReLU"
+  bottom: "conv6_4/3x3_dwconv/SE_fc1"
+  top: "conv6_4/3x3_dwconv/SE_fc1"
+}
+layer {
+  name: "conv6_4/3x3_dwconv/SE_fc2"
+  type: "Convolution"
+  bottom: "conv6_4/3x3_dwconv/SE_fc1"
+  top: "conv6_4/3x3_dwconv/SE_fc2"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  convolution_param {
+    engine: CAFFE
+    fp16_accumulation: true
+    num_output: 288
+    bias_term: false
+    kernel_size: 1
+    stride: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+  }
+  quantize_param {
+    precision: 8
+    channel_shared: false
+  }
+}
+layer {
+  name: "conv6_4/3x3_dwconv/SE_weights"
+  type: "Sigmoid"
+  bottom: "conv6_4/3x3_dwconv/SE_fc2"
+  top: "conv6_4/3x3_dwconv/SE_fc2"
+}
+layer {
+  name: "conv6_4/3x3_dwconv/SE_weights/reshape"
+  type: "Reshape"
+  bottom: "conv6_4/3x3_dwconv/SE_fc2"
+  top: "conv6_4/3x3_dwconv/SE_weights/reshape"
+  reshape_param {
+    shape {
+      dim: 0
+      dim: 0
+    }
+  }
+}
+layer {
+  name: "conv6_4/3x3_dwconv/scale"
+  type: "Scale"
+  bottom: "conv6_4/3x3_dwconv/concat"
+  bottom: "conv6_4/3x3_dwconv/SE_weights/reshape"
+  top: "conv6_4/3x3_dwconv/scale"
+  scale_param {
+    axis: 0
+    bias_term: false
+  }
+}
+layer {
+  name: "conv6_4/3x3_dwconv/scale_fixed_point"
+  type: "Quantize"
+  bottom: "conv6_4/3x3_dwconv/scale"
+  top: "conv6_4/3x3_dwconv/scale"
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  quantize_param {
+    precision: 8
+    
+    frozen: true
+    tolerance: 1.5
+    positive: false
+  }
+}
+layer {
+  name: "conv6_4/1x1_decrease"
+  type: "Convolution"
+  bottom: "conv6_4/3x3_dwconv/scale"
+  top: "conv6_4/1x1_decrease/bn"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    engine: CAFFE
+    fp16_accumulation: true
+    num_output: 96
+    bias_term: true
+    kernel_size: 1
+    stride: 1
+    weight_filler {
+      type: "msra"
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+  quantize_param {
+    precision: 8
+    channel_shared: false
+  }
+}
+layer {
+  name: "conv6_4/elt_sum"
+  type: "Eltwise"
+  bottom: "conv6_3/elt_sum"
+  bottom: "conv6_4/1x1_decrease/bn"
+  top: "conv6_4/elt_sum"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "conv6_4/elt_sum_fixed_point"
+  type: "Quantize"
+  bottom: "conv6_4/elt_sum"
+  top: "conv6_4/elt_sum"
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  quantize_param {
+    precision: 8
+    
+    frozen: true
+    tolerance: 1.5
+    positive: false
+  }
+}
+layer {
+  name: "conv6_5/1x1_increase"
+  type: "Convolution"
+  bottom: "conv6_4/elt_sum"
+  top: "conv6_5/1x1_increase/bn"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    engine: CAFFE
+    fp16_accumulation: true
+    num_output: 288
+    bias_term: true
+    kernel_size: 1
+    stride: 1
+    weight_filler {
+      type: "msra"
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+  quantize_param {
+    precision: 8
+    channel_shared: false
+  }
+}
+layer {
+  name: "conv6_5/1x1_increase/hardswish"
+  type: "HardSwish"
+  bottom: "conv6_5/1x1_increase/bn"
+  top: "conv6_5/1x1_increase/bn"
+}
+layer {
+  name: "conv6_5/1x1_increase/bn_fixed_point"
+  type: "Quantize"
+  bottom: "conv6_5/1x1_increase/bn"
+  top: "conv6_5/1x1_increase/bn"
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  quantize_param {
+    precision: 8
+    
+    frozen: true
+    tolerance: 1.5
+    positive: false
+  }
+}
+layer {
+  name: "conv6_5/1x1_increase/slice"
+  type: "Slice"
+  bottom: "conv6_5/1x1_increase/bn"
+  top: "conv6_5/1x1_increase/split1"
+  top: "conv6_5/1x1_increase/split2"
+  top: "conv6_5/1x1_increase/split3"
+  slice_param {
+    slice_point: 96
+    slice_point: 192
+  }
+}
+layer {
+  name: "conv6_5/3x3_dwconv/slice_0"
+  type: "Convolution"
+  bottom: "conv6_5/1x1_increase/split1"
+  top: "conv6_5/3x3_dwconv/slice_0/bn"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    engine: CAFFE
+    fp16_accumulation: true
+    num_output: 96
+    bias_term: true
+    pad: 1
+    kernel_size: 3
+    group: 96
+    stride: 1
+    weight_filler {
+      type: "msra"
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+  quantize_param {
+    precision: 8
+    channel_shared: false
+  }
+}
+layer {
+  name: "conv6_5/3x3_dwconv/slice_0/hardswish"
+  type: "HardSwish"
+  bottom: "conv6_5/3x3_dwconv/slice_0/bn"
+  top: "conv6_5/3x3_dwconv/slice_0/bn"
+}
+layer {
+  name: "conv6_5/3x3_dwconv/slice_1"
+  type: "Convolution"
+  bottom: "conv6_5/1x1_increase/split2"
+  top: "conv6_5/3x3_dwconv/slice_1/bn"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    engine: CAFFE
+    fp16_accumulation: true
+    num_output: 96
+    bias_term: true
+    pad: 2
+    kernel_size: 5
+    group: 96
+    stride: 1
+    weight_filler {
+      type: "msra"
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+  quantize_param {
+    precision: 8
+    channel_shared: false
+  }
+}
+layer {
+  name: "conv6_5/3x3_dwconv/slice_1/hardswish"
+  type: "HardSwish"
+  bottom: "conv6_5/3x3_dwconv/slice_1/bn"
+  top: "conv6_5/3x3_dwconv/slice_1/bn"
+}
+layer {
+  name: "conv6_5/3x3_dwconv/slice_2"
+  type: "Convolution"
+  bottom: "conv6_5/1x1_increase/split3"
+  top: "conv6_5/3x3_dwconv/slice_2/bn"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    engine: CAFFE
+    fp16_accumulation: true
+    num_output: 96
+    bias_term: true
+    pad: 3
+    kernel_size: 7
+    group: 96
+    stride: 1
+    weight_filler {
+      type: "msra"
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+  quantize_param {
+    precision: 8
+    channel_shared: false
+  }
+}
+layer {
+  name: "conv6_5/3x3_dwconv/slice_2/hardswish"
+  type: "HardSwish"
+  bottom: "conv6_5/3x3_dwconv/slice_2/bn"
+  top: "conv6_5/3x3_dwconv/slice_2/bn"
+}
+layer {
+  name: "conv6_5/3x3_dwconv/concat"
+  type: "Concat"
+  bottom: "conv6_5/3x3_dwconv/slice_0/bn"
+  bottom: "conv6_5/3x3_dwconv/slice_1/bn"
+  bottom: "conv6_5/3x3_dwconv/slice_2/bn"
+  top: "conv6_5/3x3_dwconv/concat"
+}
+layer {
+  name: "conv6_5/3x3_dwconv/concat_fixed_point"
+  type: "Quantize"
+  bottom: "conv6_5/3x3_dwconv/concat"
+  top: "conv6_5/3x3_dwconv/concat"
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  quantize_param {
+    precision: 8
+    
+    frozen: true
+    tolerance: 1.5
+    positive: false
+  }
+}
+layer {
+  name: "conv6_5/3x3_dwconv/SE_global_pool"
+  type: "Pooling"
+  bottom: "conv6_5/3x3_dwconv/concat"
+  top: "conv6_5/3x3_dwconv/SE_global_pool"
+  pooling_param {
+    pool: AVE
+    engine: CAFFE
+    global_pooling: true
+  }
+}
+layer {
+  name: "conv6_5/3x3_dwconv/SE_bn"
+  type: "Scale"
+  bottom: "conv6_5/3x3_dwconv/SE_global_pool"
+  top: "conv6_5/3x3_dwconv/SE_bn"
+  param {
+    lr_mult: 1
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  scale_param {
+    axis: 1
+    num_axes: 1
+    bias_term: true
+  }
+}
+layer {
+  name: "conv6_5/3x3_dwconv/SE_fc1"
+  type: "Convolution"
+  bottom: "conv6_5/3x3_dwconv/SE_bn"
+  top: "conv6_5/3x3_dwconv/SE_fc1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  convolution_param {
+    engine: CAFFE
+    fp16_accumulation: true
+    num_output: 18
+    bias_term: false
+    kernel_size: 1
+    stride: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+  }
+  quantize_param {
+    precision: 8
+    channel_shared: false
+  }
+}
+layer {
+  name: "conv6_5/3x3_dwconv/SE_fc1/relu"
+  type: "ReLU"
+  bottom: "conv6_5/3x3_dwconv/SE_fc1"
+  top: "conv6_5/3x3_dwconv/SE_fc1"
+}
+layer {
+  name: "conv6_5/3x3_dwconv/SE_fc2"
+  type: "Convolution"
+  bottom: "conv6_5/3x3_dwconv/SE_fc1"
+  top: "conv6_5/3x3_dwconv/SE_fc2"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  convolution_param {
+    engine: CAFFE
+    fp16_accumulation: true
+    num_output: 288
+    bias_term: false
+    kernel_size: 1
+    stride: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+  }
+  quantize_param {
+    precision: 8
+    channel_shared: false
+  }
+}
+layer {
+  name: "conv6_5/3x3_dwconv/SE_weights"
+  type: "Sigmoid"
+  bottom: "conv6_5/3x3_dwconv/SE_fc2"
+  top: "conv6_5/3x3_dwconv/SE_fc2"
+}
+layer {
+  name: "conv6_5/3x3_dwconv/SE_weights/reshape"
+  type: "Reshape"
+  bottom: "conv6_5/3x3_dwconv/SE_fc2"
+  top: "conv6_5/3x3_dwconv/SE_weights/reshape"
+  reshape_param {
+    shape {
+      dim: 0
+      dim: 0
+    }
+  }
+}
+layer {
+  name: "conv6_5/3x3_dwconv/scale"
+  type: "Scale"
+  bottom: "conv6_5/3x3_dwconv/concat"
+  bottom: "conv6_5/3x3_dwconv/SE_weights/reshape"
+  top: "conv6_5/3x3_dwconv/scale"
+  scale_param {
+    axis: 0
+    bias_term: false
+  }
+}
+layer {
+  name: "conv6_5/3x3_dwconv/scale_fixed_point"
+  type: "Quantize"
+  bottom: "conv6_5/3x3_dwconv/scale"
+  top: "conv6_5/3x3_dwconv/scale"
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  quantize_param {
+    precision: 8
+    
+    frozen: true
+    tolerance: 1.5
+    positive: false
+  }
+}
+layer {
+  name: "conv6_5/1x1_decrease"
+  type: "Convolution"
+  bottom: "conv6_5/3x3_dwconv/scale"
+  top: "conv6_5/1x1_decrease/bn"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    engine: CAFFE
+    fp16_accumulation: true
+    num_output: 96
+    bias_term: true
+    kernel_size: 1
+    stride: 1
+    weight_filler {
+      type: "msra"
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+  quantize_param {
+    precision: 8
+    channel_shared: false
+  }
+}
+layer {
+  name: "conv6_5/elt_sum"
+  type: "Eltwise"
+  bottom: "conv6_4/elt_sum"
+  bottom: "conv6_5/1x1_decrease/bn"
+  top: "conv6_5/elt_sum"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "conv6_5/elt_sum_fixed_point"
+  type: "Quantize"
+  bottom: "conv6_5/elt_sum"
+  top: "conv6_5/elt_sum"
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  quantize_param {
+    precision: 8
+    
+    frozen: true
+    tolerance: 1.5
     positive: false
   }
 }
 layer {
   name: "conv7_0/1x1_increase"
   type: "Convolution"
-  bottom: "conv6_3/elt_sum"
+  bottom: "conv6_5/elt_sum"
   top: "conv7_0/1x1_increase/bn"
   param {
     lr_mult: 1
@@ -4913,8 +6020,8 @@ layer {
   }
 }
 layer {
-  name: "conv7_0/1x1_increase/relu"
-  type: "ReLU"
+  name: "conv7_0/1x1_increase/hardswish"
+  type: "HardSwish"
   bottom: "conv7_0/1x1_increase/bn"
   top: "conv7_0/1x1_increase/bn"
 }
@@ -4929,9 +6036,10 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
-    positive: true
+    tolerance: 1.5
+    positive: false
   }
 }
 layer {
@@ -4984,8 +6092,8 @@ layer {
   }
 }
 layer {
-  name: "conv7_0/3x3_dwconv/slice_0/relu"
-  type: "ReLU"
+  name: "conv7_0/3x3_dwconv/slice_0/hardswish"
+  type: "HardSwish"
   bottom: "conv7_0/3x3_dwconv/slice_0/bn"
   top: "conv7_0/3x3_dwconv/slice_0/bn"
 }
@@ -5025,8 +6133,8 @@ layer {
   }
 }
 layer {
-  name: "conv7_0/3x3_dwconv/slice_1/relu"
-  type: "ReLU"
+  name: "conv7_0/3x3_dwconv/slice_1/hardswish"
+  type: "HardSwish"
   bottom: "conv7_0/3x3_dwconv/slice_1/bn"
   top: "conv7_0/3x3_dwconv/slice_1/bn"
 }
@@ -5066,8 +6174,8 @@ layer {
   }
 }
 layer {
-  name: "conv7_0/3x3_dwconv/slice_2/relu"
-  type: "ReLU"
+  name: "conv7_0/3x3_dwconv/slice_2/hardswish"
+  type: "HardSwish"
   bottom: "conv7_0/3x3_dwconv/slice_2/bn"
   top: "conv7_0/3x3_dwconv/slice_2/bn"
 }
@@ -5107,8 +6215,8 @@ layer {
   }
 }
 layer {
-  name: "conv7_0/3x3_dwconv/slice_3/relu"
-  type: "ReLU"
+  name: "conv7_0/3x3_dwconv/slice_3/hardswish"
+  type: "HardSwish"
   bottom: "conv7_0/3x3_dwconv/slice_3/bn"
   top: "conv7_0/3x3_dwconv/slice_3/bn"
 }
@@ -5132,9 +6240,10 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
-    positive: true
+    tolerance: 1.5
+    positive: false
   }
 }
 layer {
@@ -5149,9 +6258,28 @@ layer {
   }
 }
 layer {
+  name: "conv7_0/3x3_dwconv/SE_bn"
+  type: "Scale"
+  bottom: "conv7_0/3x3_dwconv/SE_global_pool"
+  top: "conv7_0/3x3_dwconv/SE_bn"
+  param {
+    lr_mult: 1
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  scale_param {
+    axis: 1
+    num_axes: 1
+    bias_term: true
+  }
+}
+layer {
   name: "conv7_0/3x3_dwconv/SE_fc1"
   type: "Convolution"
-  bottom: "conv7_0/3x3_dwconv/SE_global_pool"
+  bottom: "conv7_0/3x3_dwconv/SE_bn"
   top: "conv7_0/3x3_dwconv/SE_fc1"
   param {
     lr_mult: 1
@@ -5246,8 +6374,9 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
+    tolerance: 1.5
     positive: false
   }
 }
@@ -5295,8 +6424,9 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
+    tolerance: 1.5
     positive: false
   }
 }
@@ -5334,8 +6464,8 @@ layer {
   }
 }
 layer {
-  name: "conv7_1/1x1_increase/relu"
-  type: "ReLU"
+  name: "conv7_1/1x1_increase/hardswish"
+  type: "HardSwish"
   bottom: "conv7_1/1x1_increase/bn"
   top: "conv7_1/1x1_increase/bn"
 }
@@ -5350,9 +6480,10 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
-    positive: true
+    tolerance: 1.5
+    positive: false
   }
 }
 layer {
@@ -5403,8 +6534,8 @@ layer {
   }
 }
 layer {
-  name: "conv7_1/3x3_dwconv/slice_0/relu"
-  type: "ReLU"
+  name: "conv7_1/3x3_dwconv/slice_0/hardswish"
+  type: "HardSwish"
   bottom: "conv7_1/3x3_dwconv/slice_0/bn"
   top: "conv7_1/3x3_dwconv/slice_0/bn"
 }
@@ -5444,8 +6575,8 @@ layer {
   }
 }
 layer {
-  name: "conv7_1/3x3_dwconv/slice_1/relu"
-  type: "ReLU"
+  name: "conv7_1/3x3_dwconv/slice_1/hardswish"
+  type: "HardSwish"
   bottom: "conv7_1/3x3_dwconv/slice_1/bn"
   top: "conv7_1/3x3_dwconv/slice_1/bn"
 }
@@ -5485,8 +6616,8 @@ layer {
   }
 }
 layer {
-  name: "conv7_1/3x3_dwconv/slice_2/relu"
-  type: "ReLU"
+  name: "conv7_1/3x3_dwconv/slice_2/hardswish"
+  type: "HardSwish"
   bottom: "conv7_1/3x3_dwconv/slice_2/bn"
   top: "conv7_1/3x3_dwconv/slice_2/bn"
 }
@@ -5509,9 +6640,10 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
-    positive: true
+    tolerance: 1.5
+    positive: false
   }
 }
 layer {
@@ -5526,9 +6658,28 @@ layer {
   }
 }
 layer {
+  name: "conv7_1/3x3_dwconv/SE_bn"
+  type: "Scale"
+  bottom: "conv7_1/3x3_dwconv/SE_global_pool"
+  top: "conv7_1/3x3_dwconv/SE_bn"
+  param {
+    lr_mult: 1
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  scale_param {
+    axis: 1
+    num_axes: 1
+    bias_term: true
+  }
+}
+layer {
   name: "conv7_1/3x3_dwconv/SE_fc1"
   type: "Convolution"
-  bottom: "conv7_1/3x3_dwconv/SE_global_pool"
+  bottom: "conv7_1/3x3_dwconv/SE_bn"
   top: "conv7_1/3x3_dwconv/SE_fc1"
   param {
     lr_mult: 1
@@ -5623,8 +6774,9 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
+    tolerance: 1.5
     positive: false
   }
 }
@@ -5682,8 +6834,9 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
+    tolerance: 1.5
     positive: false
   }
 }
@@ -5721,8 +6874,8 @@ layer {
   }
 }
 layer {
-  name: "conv7_2/1x1_increase/relu"
-  type: "ReLU"
+  name: "conv7_2/1x1_increase/hardswish"
+  type: "HardSwish"
   bottom: "conv7_2/1x1_increase/bn"
   top: "conv7_2/1x1_increase/bn"
 }
@@ -5737,9 +6890,10 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
-    positive: true
+    tolerance: 1.5
+    positive: false
   }
 }
 layer {
@@ -5790,8 +6944,8 @@ layer {
   }
 }
 layer {
-  name: "conv7_2/3x3_dwconv/slice_0/relu"
-  type: "ReLU"
+  name: "conv7_2/3x3_dwconv/slice_0/hardswish"
+  type: "HardSwish"
   bottom: "conv7_2/3x3_dwconv/slice_0/bn"
   top: "conv7_2/3x3_dwconv/slice_0/bn"
 }
@@ -5831,8 +6985,8 @@ layer {
   }
 }
 layer {
-  name: "conv7_2/3x3_dwconv/slice_1/relu"
-  type: "ReLU"
+  name: "conv7_2/3x3_dwconv/slice_1/hardswish"
+  type: "HardSwish"
   bottom: "conv7_2/3x3_dwconv/slice_1/bn"
   top: "conv7_2/3x3_dwconv/slice_1/bn"
 }
@@ -5872,8 +7026,8 @@ layer {
   }
 }
 layer {
-  name: "conv7_2/3x3_dwconv/slice_2/relu"
-  type: "ReLU"
+  name: "conv7_2/3x3_dwconv/slice_2/hardswish"
+  type: "HardSwish"
   bottom: "conv7_2/3x3_dwconv/slice_2/bn"
   top: "conv7_2/3x3_dwconv/slice_2/bn"
 }
@@ -5896,9 +7050,10 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
-    positive: true
+    tolerance: 1.5
+    positive: false
   }
 }
 layer {
@@ -5913,9 +7068,28 @@ layer {
   }
 }
 layer {
+  name: "conv7_2/3x3_dwconv/SE_bn"
+  type: "Scale"
+  bottom: "conv7_2/3x3_dwconv/SE_global_pool"
+  top: "conv7_2/3x3_dwconv/SE_bn"
+  param {
+    lr_mult: 1
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  scale_param {
+    axis: 1
+    num_axes: 1
+    bias_term: true
+  }
+}
+layer {
   name: "conv7_2/3x3_dwconv/SE_fc1"
   type: "Convolution"
-  bottom: "conv7_2/3x3_dwconv/SE_global_pool"
+  bottom: "conv7_2/3x3_dwconv/SE_bn"
   top: "conv7_2/3x3_dwconv/SE_fc1"
   param {
     lr_mult: 1
@@ -6010,8 +7184,9 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
+    tolerance: 1.5
     positive: false
   }
 }
@@ -6069,789 +7244,16 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
-    positive: false
-  }
-}
-layer {
-  name: "conv7_3/1x1_increase"
-  type: "Convolution"
-  bottom: "conv7_2/elt_sum"
-  top: "conv7_3/1x1_increase/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
-  convolution_param {
-    engine: CAFFE
-    fp16_accumulation: true
-    num_output: 576
-    bias_term: true
-    kernel_size: 1
-    stride: 1
-    weight_filler {
-      type: "msra"
-    }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
-  }
-  quantize_param {
-    precision: 8
-    channel_shared: false
-  }
-}
-layer {
-  name: "conv7_3/1x1_increase/relu"
-  type: "ReLU"
-  bottom: "conv7_3/1x1_increase/bn"
-  top: "conv7_3/1x1_increase/bn"
-}
-layer {
-  name: "conv7_3/1x1_increase/bn_fixed_point"
-  type: "Quantize"
-  bottom: "conv7_3/1x1_increase/bn"
-  top: "conv7_3/1x1_increase/bn"
-  param {
-    lr_mult: 0
-    decay_mult: 0
-  }
-  quantize_param {
-    precision: 8
-    frozen: true
-    tolerance: 1.3
-    positive: true
-  }
-}
-layer {
-  name: "conv7_3/1x1_increase/slice"
-  type: "Slice"
-  bottom: "conv7_3/1x1_increase/bn"
-  top: "conv7_3/1x1_increase/split1"
-  top: "conv7_3/1x1_increase/split2"
-  top: "conv7_3/1x1_increase/split3"
-  slice_param {
-    slice_point: 192
-    slice_point: 384
-  }
-}
-layer {
-  name: "conv7_3/3x3_dwconv/slice_0"
-  type: "Convolution"
-  bottom: "conv7_3/1x1_increase/split1"
-  top: "conv7_3/3x3_dwconv/slice_0/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
-  convolution_param {
-    engine: CAFFE
-    fp16_accumulation: true
-    num_output: 192
-    bias_term: true
-    pad: 1
-    kernel_size: 3
-    group: 192
-    stride: 1
-    weight_filler {
-      type: "msra"
-    }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
-  }
-  quantize_param {
-    precision: 8
-    channel_shared: false
-  }
-}
-layer {
-  name: "conv7_3/3x3_dwconv/slice_0/relu"
-  type: "ReLU"
-  bottom: "conv7_3/3x3_dwconv/slice_0/bn"
-  top: "conv7_3/3x3_dwconv/slice_0/bn"
-}
-layer {
-  name: "conv7_3/3x3_dwconv/slice_1"
-  type: "Convolution"
-  bottom: "conv7_3/1x1_increase/split2"
-  top: "conv7_3/3x3_dwconv/slice_1/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
-  convolution_param {
-    engine: CAFFE
-    fp16_accumulation: true
-    num_output: 192
-    bias_term: true
-    pad: 2
-    kernel_size: 5
-    group: 192
-    stride: 1
-    weight_filler {
-      type: "msra"
-    }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
-  }
-  quantize_param {
-    precision: 8
-    channel_shared: false
-  }
-}
-layer {
-  name: "conv7_3/3x3_dwconv/slice_1/relu"
-  type: "ReLU"
-  bottom: "conv7_3/3x3_dwconv/slice_1/bn"
-  top: "conv7_3/3x3_dwconv/slice_1/bn"
-}
-layer {
-  name: "conv7_3/3x3_dwconv/slice_2"
-  type: "Convolution"
-  bottom: "conv7_3/1x1_increase/split3"
-  top: "conv7_3/3x3_dwconv/slice_2/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
-  convolution_param {
-    engine: CAFFE
-    fp16_accumulation: true
-    num_output: 192
-    bias_term: true
-    pad: 3
-    kernel_size: 7
-    group: 192
-    stride: 1
-    weight_filler {
-      type: "msra"
-    }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
-  }
-  quantize_param {
-    precision: 8
-    channel_shared: false
-  }
-}
-layer {
-  name: "conv7_3/3x3_dwconv/slice_2/relu"
-  type: "ReLU"
-  bottom: "conv7_3/3x3_dwconv/slice_2/bn"
-  top: "conv7_3/3x3_dwconv/slice_2/bn"
-}
-layer {
-  name: "conv7_3/3x3_dwconv/concat"
-  type: "Concat"
-  bottom: "conv7_3/3x3_dwconv/slice_0/bn"
-  bottom: "conv7_3/3x3_dwconv/slice_1/bn"
-  bottom: "conv7_3/3x3_dwconv/slice_2/bn"
-  top: "conv7_3/3x3_dwconv/concat"
-}
-layer {
-  name: "conv7_3/3x3_dwconv/concat_fixed_point"
-  type: "Quantize"
-  bottom: "conv7_3/3x3_dwconv/concat"
-  top: "conv7_3/3x3_dwconv/concat"
-  param {
-    lr_mult: 0
-    decay_mult: 0
-  }
-  quantize_param {
-    precision: 8
-    frozen: true
-    tolerance: 1.3
-    positive: true
-  }
-}
-layer {
-  name: "conv7_3/3x3_dwconv/SE_global_pool"
-  type: "Pooling"
-  bottom: "conv7_3/3x3_dwconv/concat"
-  top: "conv7_3/3x3_dwconv/SE_global_pool"
-  pooling_param {
-    pool: AVE
-    engine: CAFFE
-    global_pooling: true
-  }
-}
-layer {
-  name: "conv7_3/3x3_dwconv/SE_fc1"
-  type: "Convolution"
-  bottom: "conv7_3/3x3_dwconv/SE_global_pool"
-  top: "conv7_3/3x3_dwconv/SE_fc1"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  convolution_param {
-    engine: CAFFE
-    fp16_accumulation: true
-    num_output: 36
-    bias_term: false
-    kernel_size: 1
-    stride: 1
-    weight_filler {
-      type: "gaussian"
-      std: 0.01
-    }
-  }
-  quantize_param {
-    precision: 8
-    channel_shared: false
-  }
-}
-layer {
-  name: "conv7_3/3x3_dwconv/SE_fc1/relu"
-  type: "ReLU"
-  bottom: "conv7_3/3x3_dwconv/SE_fc1"
-  top: "conv7_3/3x3_dwconv/SE_fc1"
-}
-layer {
-  name: "conv7_3/3x3_dwconv/SE_fc2"
-  type: "Convolution"
-  bottom: "conv7_3/3x3_dwconv/SE_fc1"
-  top: "conv7_3/3x3_dwconv/SE_fc2"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  convolution_param {
-    engine: CAFFE
-    fp16_accumulation: true
-    num_output: 576
-    bias_term: false
-    kernel_size: 1
-    stride: 1
-    weight_filler {
-      type: "gaussian"
-      std: 0.01
-    }
-  }
-  quantize_param {
-    precision: 8
-    channel_shared: false
-  }
-}
-layer {
-  name: "conv7_3/3x3_dwconv/SE_weights"
-  type: "Sigmoid"
-  bottom: "conv7_3/3x3_dwconv/SE_fc2"
-  top: "conv7_3/3x3_dwconv/SE_fc2"
-}
-layer {
-  name: "conv7_3/3x3_dwconv/SE_weights/reshape"
-  type: "Reshape"
-  bottom: "conv7_3/3x3_dwconv/SE_fc2"
-  top: "conv7_3/3x3_dwconv/SE_weights/reshape"
-  reshape_param {
-    shape {
-      dim: 0
-      dim: 0
-    }
-  }
-}
-layer {
-  name: "conv7_3/3x3_dwconv/scale"
-  type: "Scale"
-  bottom: "conv7_3/3x3_dwconv/concat"
-  bottom: "conv7_3/3x3_dwconv/SE_weights/reshape"
-  top: "conv7_3/3x3_dwconv/scale"
-  scale_param {
-    axis: 0
-    bias_term: false
-  }
-}
-layer {
-  name: "conv7_3/3x3_dwconv/scale_fixed_point"
-  type: "Quantize"
-  bottom: "conv7_3/3x3_dwconv/scale"
-  top: "conv7_3/3x3_dwconv/scale"
-  param {
-    lr_mult: 0
-    decay_mult: 0
-  }
-  quantize_param {
-    precision: 8
-    frozen: true
-    tolerance: 1.3
-    positive: false
-  }
-}
-layer {
-  name: "conv7_3/1x1_decrease"
-  type: "Convolution"
-  bottom: "conv7_3/3x3_dwconv/scale"
-  top: "conv7_3/1x1_decrease/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
-  convolution_param {
-    engine: CAFFE
-    fp16_accumulation: true
-    num_output: 192
-    bias_term: true
-    kernel_size: 1
-    stride: 1
-    weight_filler {
-      type: "msra"
-    }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
-  }
-  quantize_param {
-    precision: 8
-    channel_shared: false
-  }
-}
-layer {
-  name: "conv7_3/elt_sum"
-  type: "Eltwise"
-  bottom: "conv7_2/elt_sum"
-  bottom: "conv7_3/1x1_decrease/bn"
-  top: "conv7_3/elt_sum"
-  eltwise_param {
-    operation: SUM
-  }
-}
-layer {
-  name: "conv7_3/elt_sum_fixed_point"
-  type: "Quantize"
-  bottom: "conv7_3/elt_sum"
-  top: "conv7_3/elt_sum"
-  param {
-    lr_mult: 0
-    decay_mult: 0
-  }
-  quantize_param {
-    precision: 8
-    frozen: true
-    tolerance: 1.3
-    positive: false
-  }
-}
-layer {
-  name: "conv7_4/1x1_increase"
-  type: "Convolution"
-  bottom: "conv7_3/elt_sum"
-  top: "conv7_4/1x1_increase/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
-  convolution_param {
-    engine: CAFFE
-    fp16_accumulation: true
-    num_output: 576
-    bias_term: true
-    kernel_size: 1
-    stride: 1
-    weight_filler {
-      type: "msra"
-    }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
-  }
-  quantize_param {
-    precision: 8
-    channel_shared: false
-  }
-}
-layer {
-  name: "conv7_4/1x1_increase/relu"
-  type: "ReLU"
-  bottom: "conv7_4/1x1_increase/bn"
-  top: "conv7_4/1x1_increase/bn"
-}
-layer {
-  name: "conv7_4/1x1_increase/bn_fixed_point"
-  type: "Quantize"
-  bottom: "conv7_4/1x1_increase/bn"
-  top: "conv7_4/1x1_increase/bn"
-  param {
-    lr_mult: 0
-    decay_mult: 0
-  }
-  quantize_param {
-    precision: 8
-    frozen: true
-    tolerance: 1.3
-    positive: true
-  }
-}
-layer {
-  name: "conv7_4/1x1_increase/slice"
-  type: "Slice"
-  bottom: "conv7_4/1x1_increase/bn"
-  top: "conv7_4/1x1_increase/split1"
-  top: "conv7_4/1x1_increase/split2"
-  top: "conv7_4/1x1_increase/split3"
-  slice_param {
-    slice_point: 192
-    slice_point: 384
-  }
-}
-layer {
-  name: "conv7_4/3x3_dwconv/slice_0"
-  type: "Convolution"
-  bottom: "conv7_4/1x1_increase/split1"
-  top: "conv7_4/3x3_dwconv/slice_0/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
-  convolution_param {
-    engine: CAFFE
-    fp16_accumulation: true
-    num_output: 192
-    bias_term: true
-    pad: 1
-    kernel_size: 3
-    group: 192
-    stride: 1
-    weight_filler {
-      type: "msra"
-    }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
-  }
-  quantize_param {
-    precision: 8
-    channel_shared: false
-  }
-}
-layer {
-  name: "conv7_4/3x3_dwconv/slice_0/relu"
-  type: "ReLU"
-  bottom: "conv7_4/3x3_dwconv/slice_0/bn"
-  top: "conv7_4/3x3_dwconv/slice_0/bn"
-}
-layer {
-  name: "conv7_4/3x3_dwconv/slice_1"
-  type: "Convolution"
-  bottom: "conv7_4/1x1_increase/split2"
-  top: "conv7_4/3x3_dwconv/slice_1/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
-  convolution_param {
-    engine: CAFFE
-    fp16_accumulation: true
-    num_output: 192
-    bias_term: true
-    pad: 2
-    kernel_size: 5
-    group: 192
-    stride: 1
-    weight_filler {
-      type: "msra"
-    }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
-  }
-  quantize_param {
-    precision: 8
-    channel_shared: false
-  }
-}
-layer {
-  name: "conv7_4/3x3_dwconv/slice_1/relu"
-  type: "ReLU"
-  bottom: "conv7_4/3x3_dwconv/slice_1/bn"
-  top: "conv7_4/3x3_dwconv/slice_1/bn"
-}
-layer {
-  name: "conv7_4/3x3_dwconv/slice_2"
-  type: "Convolution"
-  bottom: "conv7_4/1x1_increase/split3"
-  top: "conv7_4/3x3_dwconv/slice_2/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
-  convolution_param {
-    engine: CAFFE
-    fp16_accumulation: true
-    num_output: 192
-    bias_term: true
-    pad: 3
-    kernel_size: 7
-    group: 192
-    stride: 1
-    weight_filler {
-      type: "msra"
-    }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
-  }
-  quantize_param {
-    precision: 8
-    channel_shared: false
-  }
-}
-layer {
-  name: "conv7_4/3x3_dwconv/slice_2/relu"
-  type: "ReLU"
-  bottom: "conv7_4/3x3_dwconv/slice_2/bn"
-  top: "conv7_4/3x3_dwconv/slice_2/bn"
-}
-layer {
-  name: "conv7_4/3x3_dwconv/concat"
-  type: "Concat"
-  bottom: "conv7_4/3x3_dwconv/slice_0/bn"
-  bottom: "conv7_4/3x3_dwconv/slice_1/bn"
-  bottom: "conv7_4/3x3_dwconv/slice_2/bn"
-  top: "conv7_4/3x3_dwconv/concat"
-}
-layer {
-  name: "conv7_4/3x3_dwconv/concat_fixed_point"
-  type: "Quantize"
-  bottom: "conv7_4/3x3_dwconv/concat"
-  top: "conv7_4/3x3_dwconv/concat"
-  param {
-    lr_mult: 0
-    decay_mult: 0
-  }
-  quantize_param {
-    precision: 8
-    frozen: true
-    tolerance: 1.3
-    positive: true
-  }
-}
-layer {
-  name: "conv7_4/3x3_dwconv/SE_global_pool"
-  type: "Pooling"
-  bottom: "conv7_4/3x3_dwconv/concat"
-  top: "conv7_4/3x3_dwconv/SE_global_pool"
-  pooling_param {
-    pool: AVE
-    engine: CAFFE
-    global_pooling: true
-  }
-}
-layer {
-  name: "conv7_4/3x3_dwconv/SE_fc1"
-  type: "Convolution"
-  bottom: "conv7_4/3x3_dwconv/SE_global_pool"
-  top: "conv7_4/3x3_dwconv/SE_fc1"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  convolution_param {
-    engine: CAFFE
-    fp16_accumulation: true
-    num_output: 36
-    bias_term: false
-    kernel_size: 1
-    stride: 1
-    weight_filler {
-      type: "gaussian"
-      std: 0.01
-    }
-  }
-  quantize_param {
-    precision: 8
-    channel_shared: false
-  }
-}
-layer {
-  name: "conv7_4/3x3_dwconv/SE_fc1/relu"
-  type: "ReLU"
-  bottom: "conv7_4/3x3_dwconv/SE_fc1"
-  top: "conv7_4/3x3_dwconv/SE_fc1"
-}
-layer {
-  name: "conv7_4/3x3_dwconv/SE_fc2"
-  type: "Convolution"
-  bottom: "conv7_4/3x3_dwconv/SE_fc1"
-  top: "conv7_4/3x3_dwconv/SE_fc2"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  convolution_param {
-    engine: CAFFE
-    fp16_accumulation: true
-    num_output: 576
-    bias_term: false
-    kernel_size: 1
-    stride: 1
-    weight_filler {
-      type: "gaussian"
-      std: 0.01
-    }
-  }
-  quantize_param {
-    precision: 8
-    channel_shared: false
-  }
-}
-layer {
-  name: "conv7_4/3x3_dwconv/SE_weights"
-  type: "Sigmoid"
-  bottom: "conv7_4/3x3_dwconv/SE_fc2"
-  top: "conv7_4/3x3_dwconv/SE_fc2"
-}
-layer {
-  name: "conv7_4/3x3_dwconv/SE_weights/reshape"
-  type: "Reshape"
-  bottom: "conv7_4/3x3_dwconv/SE_fc2"
-  top: "conv7_4/3x3_dwconv/SE_weights/reshape"
-  reshape_param {
-    shape {
-      dim: 0
-      dim: 0
-    }
-  }
-}
-layer {
-  name: "conv7_4/3x3_dwconv/scale"
-  type: "Scale"
-  bottom: "conv7_4/3x3_dwconv/concat"
-  bottom: "conv7_4/3x3_dwconv/SE_weights/reshape"
-  top: "conv7_4/3x3_dwconv/scale"
-  scale_param {
-    axis: 0
-    bias_term: false
-  }
-}
-layer {
-  name: "conv7_4/3x3_dwconv/scale_fixed_point"
-  type: "Quantize"
-  bottom: "conv7_4/3x3_dwconv/scale"
-  top: "conv7_4/3x3_dwconv/scale"
-  param {
-    lr_mult: 0
-    decay_mult: 0
-  }
-  quantize_param {
-    precision: 8
-    frozen: true
-    tolerance: 1.3
-    positive: false
-  }
-}
-layer {
-  name: "conv7_4/1x1_decrease"
-  type: "Convolution"
-  bottom: "conv7_4/3x3_dwconv/scale"
-  top: "conv7_4/1x1_decrease/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
-  convolution_param {
-    engine: CAFFE
-    fp16_accumulation: true
-    num_output: 192
-    bias_term: true
-    kernel_size: 1
-    stride: 1
-    weight_filler {
-      type: "msra"
-    }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
-  }
-  quantize_param {
-    precision: 8
-    channel_shared: false
-  }
-}
-layer {
-  name: "conv7_4/elt_sum"
-  type: "Eltwise"
-  bottom: "conv7_3/elt_sum"
-  bottom: "conv7_4/1x1_decrease/bn"
-  top: "conv7_4/elt_sum"
-  eltwise_param {
-    operation: SUM
-  }
-}
-layer {
-  name: "conv7_4/elt_sum_fixed_point"
-  type: "Quantize"
-  bottom: "conv7_4/elt_sum"
-  top: "conv7_4/elt_sum"
-  param {
-    lr_mult: 0
-    decay_mult: 0
-  }
-  quantize_param {
-    precision: 8
-    frozen: true
-    tolerance: 1.3
+    tolerance: 1.5
     positive: false
   }
 }
 layer {
   name: "conv8_0/1x1_increase"
   type: "Convolution"
-  bottom: "conv7_4/elt_sum"
+  bottom: "conv7_2/elt_sum"
   top: "conv8_0/1x1_increase/bn"
   param {
     lr_mult: 1
@@ -6882,8 +7284,8 @@ layer {
   }
 }
 layer {
-  name: "conv8_0/1x1_increase/relu"
-  type: "ReLU"
+  name: "conv8_0/1x1_increase/hardswish"
+  type: "HardSwish"
   bottom: "conv8_0/1x1_increase/bn"
   top: "conv8_0/1x1_increase/bn"
 }
@@ -6898,9 +7300,10 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
-    positive: true
+    tolerance: 1.5
+    positive: false
   }
 }
 layer {
@@ -6951,8 +7354,8 @@ layer {
   }
 }
 layer {
-  name: "conv8_0/3x3_dwconv/slice_0/relu"
-  type: "ReLU"
+  name: "conv8_0/3x3_dwconv/slice_0/hardswish"
+  type: "HardSwish"
   bottom: "conv8_0/3x3_dwconv/slice_0/bn"
   top: "conv8_0/3x3_dwconv/slice_0/bn"
 }
@@ -6992,8 +7395,8 @@ layer {
   }
 }
 layer {
-  name: "conv8_0/3x3_dwconv/slice_1/relu"
-  type: "ReLU"
+  name: "conv8_0/3x3_dwconv/slice_1/hardswish"
+  type: "HardSwish"
   bottom: "conv8_0/3x3_dwconv/slice_1/bn"
   top: "conv8_0/3x3_dwconv/slice_1/bn"
 }
@@ -7033,8 +7436,8 @@ layer {
   }
 }
 layer {
-  name: "conv8_0/3x3_dwconv/slice_2/relu"
-  type: "ReLU"
+  name: "conv8_0/3x3_dwconv/slice_2/hardswish"
+  type: "HardSwish"
   bottom: "conv8_0/3x3_dwconv/slice_2/bn"
   top: "conv8_0/3x3_dwconv/slice_2/bn"
 }
@@ -7057,9 +7460,10 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
-    positive: true
+    tolerance: 1.5
+    positive: false
   }
 }
 layer {
@@ -7074,9 +7478,28 @@ layer {
   }
 }
 layer {
+  name: "conv8_0/3x3_dwconv/SE_bn"
+  type: "Scale"
+  bottom: "conv8_0/3x3_dwconv/SE_global_pool"
+  top: "conv8_0/3x3_dwconv/SE_bn"
+  param {
+    lr_mult: 1
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  scale_param {
+    axis: 1
+    num_axes: 1
+    bias_term: true
+  }
+}
+layer {
   name: "conv8_0/3x3_dwconv/SE_fc1"
   type: "Convolution"
-  bottom: "conv8_0/3x3_dwconv/SE_global_pool"
+  bottom: "conv8_0/3x3_dwconv/SE_bn"
   top: "conv8_0/3x3_dwconv/SE_fc1"
   param {
     lr_mult: 1
@@ -7171,8 +7594,9 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
+    tolerance: 1.5
     positive: false
   }
 }
@@ -7220,8 +7644,9 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
+    tolerance: 1.5
     positive: false
   }
 }
@@ -7275,8 +7700,9 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
+    tolerance: 1.5
     positive: true
   }
 }
@@ -7302,8 +7728,9 @@ layer {
   }
   quantize_param {
     precision: 8
+    
     frozen: true
-    tolerance: 1.3
+    tolerance: 1.5
     positive: true
   }
 }
@@ -7333,6 +7760,17 @@ layer {
   quantize_param {
     precision: 8
     channel_shared: false
+  }
+}
+layer {
+  name: "loss"
+  type: "LabelSmoothRegularLoss"
+  bottom: "classifier"
+  bottom: "label"
+  top: "loss"
+  loss_weight: 1
+  lsr_loss_param {
+    eps: 0.1
   }
 }
 layer {

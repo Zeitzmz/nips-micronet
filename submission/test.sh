@@ -14,5 +14,5 @@ mkdir -p log
 ${caffe_tools}/caffe test \
     -model ${model} \
     -weights ${weights} \
-    -iterations 1000 \
+    -iterations 2000 \
     -gpu 0 2>&1 | tee ./log/test.log 

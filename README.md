@@ -24,13 +24,13 @@ $ cd micronet-caffe && make -j
 ```
 3. Test submitted model & Scoring
 ``` 
-$ cd ../submit-model
+$ cd ../submission
 $ ./test.sh imagenet_validation_image_folder  # ./test.sh /data/imagenet1k/val/
 $ ./score.sh imagenet_validation_image_folder # ./score.sh /data/imagenet1k/val/
 ```
 
 # Score:
-- Score: 0.25097 
-- Top-1: 75.21%
-- Top-5: 92.28%
+- Score: 0.203547 
+- Top-1: 75.1142%
+- Top-5: 92.2362%
 

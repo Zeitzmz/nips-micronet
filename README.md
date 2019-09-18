@@ -30,7 +30,7 @@ $ ./score.sh imagenet_validation_image_folder # ./score.sh /data/imagenet1k/val/
 ```
 
 # Score:
-- Score: 0.203547 
-- Top-1: 75.1142%
-- Top-5: 92.2362%
+- Score: 0.195493 
+- Top-1: 75.0422%
+- Top-5: 92.2582%
 

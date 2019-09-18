@@ -128,5 +128,5 @@ conv8_0/3x3_dwconv/slice_2 0.45
 conv8_0/3x3_dwconv/SE_fc1 0.5
 conv8_0/3x3_dwconv/SE_fc2 0.5
 conv8_0/1x1_decrease 0.45
-conv9/1x1 0.5
-classifier 0.5
+conv9/1x1 0.45
+classifier 0.7

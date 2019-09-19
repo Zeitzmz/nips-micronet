@@ -1,0 +1,13 @@
+net: "int8/ProfitableNet.prototxt"
+display: 20
+average_loss: 20
+
+base_lr: 0.0
+lr_policy: "fixed"
+max_iter:     1
+
+momentum: 0.9
+weight_decay: 0.00004
+snapshot: 1
+snapshot_prefix: "int8/snapshots/caffe_train_fix_point"
+solver_mode: GPU

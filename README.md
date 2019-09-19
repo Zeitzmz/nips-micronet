@@ -26,8 +26,22 @@ $ cd micronet-caffe && make -j
 ``` 
 $ cd ../submission
 $ ./test.sh imagenet_validation_image_folder  # ./test.sh /data/imagenet1k/val/
+# When test, we convert 'type: "DepthwiseConvolution"' to 'type: "Convolution"' in order to use fp16.
 $ ./score.sh imagenet_validation_image_folder # ./score.sh /data/imagenet1k/val/
 ```
+
+# Train, dsd and int8
+1. train
+```
+$ ./train.sh imagenet_image_root_folder  # ./test.sh /data/imagenet1k/ (consist of dirs of train and val)
+```
+```
+$ ./dsd.sh imagenet_image_root_folder  # ./test.sh /data/imagenet1k/ (consist of dirs of train and val)
+```
+```
+$ ./int8.sh imagenet_image_root_folder  # ./test.sh /data/imagenet1k/ (consist of dirs of train and val)
+```
+
 
 # Score:
 - Score: 0.195493 

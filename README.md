@@ -30,14 +30,16 @@ $ ./test.sh imagenet_validation_image_folder  # ./test.sh /data/imagenet1k/val/
 $ ./score.sh imagenet_validation_image_folder # ./score.sh /data/imagenet1k/val/
 ```
 
-# Train, dsd and int8
-1. train
+# Train, DSD and Int8
+1. Train
 ```
 $ ./train.sh imagenet_image_root_folder  # ./test.sh /data/imagenet1k/ (consist of dirs of train and val)
 ```
+2. DSD
 ```
 $ ./dsd.sh imagenet_image_root_folder  # ./test.sh /data/imagenet1k/ (consist of dirs of train and val)
 ```
+3. Int8
 ```
 $ ./int8.sh imagenet_image_root_folder  # ./test.sh /data/imagenet1k/ (consist of dirs of train and val)
 ```

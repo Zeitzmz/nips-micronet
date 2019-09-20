@@ -33,7 +33,7 @@ $ ./score.sh imagenet_validation_image_folder # ./score.sh /data/imagenet1k/val/
 # Train, DSD and Int8
 1. Train
 ```
-$ ./train.sh imagenet_image_root_folder  # ./test.sh /data/imagenet1k/ (consist of dirs of train and val)
+$ ./train.sh imagenet_image_root_folder  # ./train.sh /data/imagenet1k/ (consist of dirs of train and val)
 ```
 2. DSD
 ```

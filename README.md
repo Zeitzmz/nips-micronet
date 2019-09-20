@@ -37,11 +37,11 @@ $ ./train.sh imagenet_image_root_folder  # ./test.sh /data/imagenet1k/ (consist 
 ```
 2. DSD
 ```
-$ ./dsd.sh imagenet_image_root_folder  # ./test.sh /data/imagenet1k/ (consist of dirs of train and val)
+$ ./dsd.sh imagenet_image_root_folder  # ./dsd.sh /data/imagenet1k/ (consist of dirs of train and val)
 ```
 3. Int8
 ```
-$ ./int8.sh imagenet_image_root_folder  # ./test.sh /data/imagenet1k/ (consist of dirs of train and val)
+$ ./int8.sh imagenet_image_root_folder  # ./int8.sh /data/imagenet1k/ (consist of dirs of train and val)
 ```
 
 

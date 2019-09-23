@@ -2,8 +2,8 @@
 
 image_folder=$1
 # replace imagenet train folder and validation folder
-sed -i 's#root_folder: "\(.*\)train/"#root_folder: "'${image_folder}train/'"#' train/ProfitableNet.prototxt
-sed -i 's#root_folder: "\(.*\)val/"#root_folder: "'${image_folder}val/'"#' train/ProfitableNet.prototxt
+sed -i 's#root_folder: "\(.*\)train/"#root_folder: "'${image_folder}train/'"#' dsd/ProfitableNet.prototxt
+sed -i 's#root_folder: "\(.*\)val/"#root_folder: "'${image_folder}val/'"#' dsd/ProfitableNet.prototxt
 
 
 

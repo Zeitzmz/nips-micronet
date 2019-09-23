@@ -12,14 +12,13 @@ layer {
     mean_value: 104
     mean_value: 117
     mean_value: 123
-
-    random_size_crop: true
   }
   image_data_param {
     source: "file_lists/sub_train.txt"
     root_folder: "/share4/public/classification_data/imagenet1k/train/"
     batch_size: 32
     shuffle: true 
+    short_edge: 256
   }
 }
 layer {

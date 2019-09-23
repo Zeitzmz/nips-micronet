@@ -37,6 +37,7 @@ $ ./train.sh imagenet_image_root_folder  # ./train.sh /data/imagenet1k/ (consist
 ```
 2. DSD
 ```
+$ ./dsd/gen_dsd_mask.sh # generate mask.bin
 $ ./dsd.sh imagenet_image_root_folder  # ./dsd.sh /data/imagenet1k/ (consist of dirs of train and val)
 ```
 3. Int8

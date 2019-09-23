@@ -15,5 +15,5 @@ mkdir -p dsd/snapshots
 
 ${caffe_tools}/caffe train \
 --solver=dsd/solver.prototxt \
---weights=train/snapshots/train_val_1500000.caffemodel \
+--weights=train/snapshots/caffe_train_iter_1500000.caffemodel \
 --gpu=all 2>&1 | tee ./dsd/log/dsd_finetune.log 

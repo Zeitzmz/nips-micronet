@@ -12,17 +12,17 @@ In this work, we take [BVLC/Caffe](https://caffe.berkeleyvision.org/) to impleme
 - install caffe GPU environments (refer to [caffe installation](https://caffe.berkeleyvision.org/installation.html)).
 
 
-# Run
-1. Download project
+# Test
+step 1. Download project
 ```
 $ git clone https://github.com/Zeitzmz/nips-micronet.git --recursive
 ```
-2. Complile caffe
+step 2. Complile caffe
 ```
 $ cd nips-micronet && git submodule foreach git pull origin master
 $ cd micronet-caffe && make -j
 ```
-3. Test submitted model & Scoring
+step 3. Test submitted model & Scoring
 ``` 
 $ cd ../submission
 $ ./test.sh imagenet_validation_image_folder  # ./test.sh /data/imagenet1k/val/
@@ -30,17 +30,17 @@ $ ./test.sh imagenet_validation_image_folder  # ./test.sh /data/imagenet1k/val/
 $ ./score.sh imagenet_validation_image_folder # ./score.sh /data/imagenet1k/val/
 ```
 
-# Train from scratch, Sparsity and Quantization
-1. Training from scratch
+# Experiment
+step 1. Training from scratch
 ```
 $ ./train.sh imagenet_image_root_folder  # ./train.sh /data/imagenet1k/ (consist of dirs of train and val)
 ```
-2. Sparsity
+step 2. Sparsity
 ```
 $ ./sparsity/gen_sparsity_mask.sh imagenet_image_root_folder # ./sparsity/gen_sparsity_mask.sh /data/imagenet1k/  # generate mask.bin
 $ ./sparsity.sh imagenet_image_root_folder  # ./sparsity.sh /data/imagenet1k/ (consist of dirs of train and val)
 ```
-3. Quantization
+step 3. Quantization
 ```
 $ ./quantization.sh imagenet_image_root_folder  # ./quantization.sh /data/imagenet1k/ (consist of dirs of train and val)
 ```

@@ -30,19 +30,19 @@ $ ./test.sh imagenet_validation_image_folder  # ./test.sh /data/imagenet1k/val/
 $ ./score.sh imagenet_validation_image_folder # ./score.sh /data/imagenet1k/val/
 ```
 
-# Train, DSD and Int8
-1. Train
+# Train from scratch, Sparsity and Quantization
+1. Training from scratch
 ```
 $ ./train.sh imagenet_image_root_folder  # ./train.sh /data/imagenet1k/ (consist of dirs of train and val)
 ```
-2. DSD
+2. Sparsity
 ```
-$ ./dsd/gen_dsd_mask.sh imagenet_image_root_folder # ./dsd/gen_dsd_mask.sh /data/imagenet1k/  # generate mask.bin
-$ ./dsd.sh imagenet_image_root_folder  # ./dsd.sh /data/imagenet1k/ (consist of dirs of train and val)
+$ ./sparsity/gen_sparsity_mask.sh imagenet_image_root_folder # ./sparsity/gen_sparsity_mask.sh /data/imagenet1k/  # generate mask.bin
+$ ./sparsity.sh imagenet_image_root_folder  # ./sparsity.sh /data/imagenet1k/ (consist of dirs of train and val)
 ```
-3. Int8
+3. Quantization
 ```
-$ ./int8.sh imagenet_image_root_folder  # ./int8.sh /data/imagenet1k/ (consist of dirs of train and val)
+$ ./quantization.sh imagenet_image_root_folder  # ./quantization.sh /data/imagenet1k/ (consist of dirs of train and val)
 ```
 
 

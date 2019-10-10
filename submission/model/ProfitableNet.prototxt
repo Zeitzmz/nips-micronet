@@ -42,14 +42,6 @@ layer {
   type: "Convolution"
   bottom: "data"
   top: "conv1/3x3_s2/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -61,13 +53,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -99,14 +87,6 @@ layer {
   type: "Convolution"
   bottom: "conv1/3x3_s2/bn"
   top: "conv2_0/3x3_dwconv/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -119,13 +99,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -157,14 +133,6 @@ layer {
   type: "Convolution"
   bottom: "conv2_0/3x3_dwconv/bn"
   top: "conv2_0/1x1_decrease/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -175,13 +143,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -207,14 +171,6 @@ layer {
   type: "Convolution"
   bottom: "conv2_0/1x1_decrease/bn"
   top: "conv3_0/1x1_increase/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -225,13 +181,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -263,14 +215,6 @@ layer {
   type: "Convolution"
   bottom: "conv3_0/1x1_increase/bn"
   top: "conv3_0/3x3_dwconv/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -283,13 +227,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -321,14 +261,6 @@ layer {
   type: "Convolution"
   bottom: "conv3_0/3x3_dwconv/bn"
   top: "conv3_0/1x1_decrease/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -339,13 +271,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -371,14 +299,6 @@ layer {
   type: "Convolution"
   bottom: "conv3_0/1x1_decrease/bn"
   top: "conv3_1/1x1_increase/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -389,13 +309,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -427,14 +343,6 @@ layer {
   type: "Convolution"
   bottom: "conv3_1/1x1_increase/bn"
   top: "conv3_1/3x3_dwconv/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -447,13 +355,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -485,14 +389,6 @@ layer {
   type: "Convolution"
   bottom: "conv3_1/3x3_dwconv/bn"
   top: "conv3_1/1x1_decrease/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -503,13 +399,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -545,14 +437,6 @@ layer {
   type: "Convolution"
   bottom: "conv3_1/elt_sum"
   top: "conv4_0/1x1_increase/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -563,13 +447,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -613,14 +493,6 @@ layer {
   type: "Convolution"
   bottom: "conv4_0/1x1_increase/split1"
   top: "conv4_0/3x3_dwconv/slice_0/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -633,13 +505,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -654,14 +522,6 @@ layer {
   type: "Convolution"
   bottom: "conv4_0/1x1_increase/split2"
   top: "conv4_0/3x3_dwconv/slice_1/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -674,13 +534,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -695,14 +551,6 @@ layer {
   type: "Convolution"
   bottom: "conv4_0/1x1_increase/split3"
   top: "conv4_0/3x3_dwconv/slice_2/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -715,13 +563,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -808,7 +652,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -840,7 +684,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -895,14 +739,6 @@ layer {
   type: "Convolution"
   bottom: "conv4_0/3x3_dwconv/scale"
   top: "conv4_0/1x1_decrease/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -913,13 +749,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -945,14 +777,6 @@ layer {
   type: "Convolution"
   bottom: "conv4_0/1x1_decrease/bn"
   top: "conv4_1/1x1_increase/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -963,13 +787,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -1011,14 +831,6 @@ layer {
   type: "Convolution"
   bottom: "conv4_1/1x1_increase/split1"
   top: "conv4_1/3x3_dwconv/slice_0/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -1031,13 +843,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -1052,14 +860,6 @@ layer {
   type: "Convolution"
   bottom: "conv4_1/1x1_increase/split2"
   top: "conv4_1/3x3_dwconv/slice_1/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -1072,13 +872,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -1164,7 +960,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -1196,7 +992,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -1251,14 +1047,6 @@ layer {
   type: "Convolution"
   bottom: "conv4_1/3x3_dwconv/scale"
   top: "conv4_1/1x1_decrease/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -1269,13 +1057,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -1311,14 +1095,6 @@ layer {
   type: "Convolution"
   bottom: "conv4_1/elt_sum"
   top: "conv4_2/1x1_increase/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -1329,13 +1105,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -1377,14 +1149,6 @@ layer {
   type: "Convolution"
   bottom: "conv4_2/1x1_increase/split1"
   top: "conv4_2/3x3_dwconv/slice_0/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -1397,13 +1161,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -1418,14 +1178,6 @@ layer {
   type: "Convolution"
   bottom: "conv4_2/1x1_increase/split2"
   top: "conv4_2/3x3_dwconv/slice_1/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -1438,13 +1190,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -1530,7 +1278,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -1562,7 +1310,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -1617,14 +1365,6 @@ layer {
   type: "Convolution"
   bottom: "conv4_2/3x3_dwconv/scale"
   top: "conv4_2/1x1_decrease/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -1635,13 +1375,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -1677,14 +1413,6 @@ layer {
   type: "Convolution"
   bottom: "conv4_2/elt_sum"
   top: "conv4_3/1x1_increase/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -1695,13 +1423,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -1743,14 +1467,6 @@ layer {
   type: "Convolution"
   bottom: "conv4_3/1x1_increase/split1"
   top: "conv4_3/3x3_dwconv/slice_0/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -1763,13 +1479,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -1784,14 +1496,6 @@ layer {
   type: "Convolution"
   bottom: "conv4_3/1x1_increase/split2"
   top: "conv4_3/3x3_dwconv/slice_1/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -1804,13 +1508,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -1896,7 +1596,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -1928,7 +1628,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -1983,14 +1683,6 @@ layer {
   type: "Convolution"
   bottom: "conv4_3/3x3_dwconv/scale"
   top: "conv4_3/1x1_decrease/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -2001,13 +1693,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -2043,14 +1731,6 @@ layer {
   type: "Convolution"
   bottom: "conv4_3/elt_sum"
   top: "conv5_0/1x1_increase/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -2061,13 +1741,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -2111,14 +1787,6 @@ layer {
   type: "Convolution"
   bottom: "conv5_0/1x1_increase/split1"
   top: "conv5_0/3x3_dwconv/slice_0/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -2131,13 +1799,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -2152,14 +1816,6 @@ layer {
   type: "Convolution"
   bottom: "conv5_0/1x1_increase/split2"
   top: "conv5_0/3x3_dwconv/slice_1/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -2172,13 +1828,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -2193,14 +1845,6 @@ layer {
   type: "Convolution"
   bottom: "conv5_0/1x1_increase/split3"
   top: "conv5_0/3x3_dwconv/slice_2/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -2213,13 +1857,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -2306,7 +1946,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -2338,7 +1978,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -2393,14 +2033,6 @@ layer {
   type: "Convolution"
   bottom: "conv5_0/3x3_dwconv/scale"
   top: "conv5_0/1x1_decrease/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -2411,13 +2043,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -2443,14 +2071,6 @@ layer {
   type: "Convolution"
   bottom: "conv5_0/1x1_decrease/bn"
   top: "conv5_1/1x1_increase/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -2461,13 +2081,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -2509,14 +2125,6 @@ layer {
   type: "Convolution"
   bottom: "conv5_1/1x1_increase/split1"
   top: "conv5_1/3x3_dwconv/slice_0/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -2529,13 +2137,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -2550,14 +2154,6 @@ layer {
   type: "Convolution"
   bottom: "conv5_1/1x1_increase/split2"
   top: "conv5_1/3x3_dwconv/slice_1/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -2570,13 +2166,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -2662,7 +2254,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -2694,7 +2286,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -2749,14 +2341,6 @@ layer {
   type: "Convolution"
   bottom: "conv5_1/3x3_dwconv/scale"
   top: "conv5_1/1x1_decrease/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -2767,13 +2351,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -2809,14 +2389,6 @@ layer {
   type: "Convolution"
   bottom: "conv5_1/elt_sum"
   top: "conv5_2/1x1_increase/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -2827,13 +2399,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -2875,14 +2443,6 @@ layer {
   type: "Convolution"
   bottom: "conv5_2/1x1_increase/split1"
   top: "conv5_2/3x3_dwconv/slice_0/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -2895,13 +2455,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -2916,14 +2472,6 @@ layer {
   type: "Convolution"
   bottom: "conv5_2/1x1_increase/split2"
   top: "conv5_2/3x3_dwconv/slice_1/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -2936,13 +2484,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -3028,7 +2572,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -3060,7 +2604,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -3115,14 +2659,6 @@ layer {
   type: "Convolution"
   bottom: "conv5_2/3x3_dwconv/scale"
   top: "conv5_2/1x1_decrease/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -3133,13 +2669,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -3175,14 +2707,6 @@ layer {
   type: "Convolution"
   bottom: "conv5_2/elt_sum"
   top: "conv5_3/1x1_increase/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -3193,13 +2717,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -3241,14 +2761,6 @@ layer {
   type: "Convolution"
   bottom: "conv5_3/1x1_increase/split1"
   top: "conv5_3/3x3_dwconv/slice_0/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -3261,13 +2773,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -3282,14 +2790,6 @@ layer {
   type: "Convolution"
   bottom: "conv5_3/1x1_increase/split2"
   top: "conv5_3/3x3_dwconv/slice_1/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -3302,13 +2802,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -3394,7 +2890,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -3426,7 +2922,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -3481,14 +2977,6 @@ layer {
   type: "Convolution"
   bottom: "conv5_3/3x3_dwconv/scale"
   top: "conv5_3/1x1_decrease/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -3499,13 +2987,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -3541,14 +3025,6 @@ layer {
   type: "Convolution"
   bottom: "conv5_3/elt_sum"
   top: "conv6_0/1x1_increase/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -3559,13 +3035,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -3609,14 +3081,6 @@ layer {
   type: "Convolution"
   bottom: "conv6_0/1x1_increase/split1"
   top: "conv6_0/3x3_dwconv/slice_0/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -3629,13 +3093,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -3650,14 +3110,6 @@ layer {
   type: "Convolution"
   bottom: "conv6_0/1x1_increase/split2"
   top: "conv6_0/3x3_dwconv/slice_1/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -3670,13 +3122,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -3691,14 +3139,6 @@ layer {
   type: "Convolution"
   bottom: "conv6_0/1x1_increase/split3"
   top: "conv6_0/3x3_dwconv/slice_2/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -3711,13 +3151,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -3804,7 +3240,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -3836,7 +3272,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -3891,14 +3327,6 @@ layer {
   type: "Convolution"
   bottom: "conv6_0/3x3_dwconv/scale"
   top: "conv6_0/1x1_decrease/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -3909,13 +3337,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -3941,14 +3365,6 @@ layer {
   type: "Convolution"
   bottom: "conv6_0/1x1_decrease/bn"
   top: "conv6_1/1x1_increase/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -3959,13 +3375,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -4009,14 +3421,6 @@ layer {
   type: "Convolution"
   bottom: "conv6_1/1x1_increase/split1"
   top: "conv6_1/3x3_dwconv/slice_0/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -4029,13 +3433,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -4050,14 +3450,6 @@ layer {
   type: "Convolution"
   bottom: "conv6_1/1x1_increase/split2"
   top: "conv6_1/3x3_dwconv/slice_1/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -4070,13 +3462,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -4091,14 +3479,6 @@ layer {
   type: "Convolution"
   bottom: "conv6_1/1x1_increase/split3"
   top: "conv6_1/3x3_dwconv/slice_2/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -4111,13 +3491,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -4204,7 +3580,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -4236,7 +3612,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -4291,14 +3667,6 @@ layer {
   type: "Convolution"
   bottom: "conv6_1/3x3_dwconv/scale"
   top: "conv6_1/1x1_decrease/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -4309,13 +3677,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -4351,14 +3715,6 @@ layer {
   type: "Convolution"
   bottom: "conv6_1/elt_sum"
   top: "conv6_2/1x1_increase/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -4369,13 +3725,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -4419,14 +3771,6 @@ layer {
   type: "Convolution"
   bottom: "conv6_2/1x1_increase/split1"
   top: "conv6_2/3x3_dwconv/slice_0/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -4439,13 +3783,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -4460,14 +3800,6 @@ layer {
   type: "Convolution"
   bottom: "conv6_2/1x1_increase/split2"
   top: "conv6_2/3x3_dwconv/slice_1/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -4480,13 +3812,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -4501,14 +3829,6 @@ layer {
   type: "Convolution"
   bottom: "conv6_2/1x1_increase/split3"
   top: "conv6_2/3x3_dwconv/slice_2/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -4521,13 +3841,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -4614,7 +3930,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -4646,7 +3962,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -4701,14 +4017,6 @@ layer {
   type: "Convolution"
   bottom: "conv6_2/3x3_dwconv/scale"
   top: "conv6_2/1x1_decrease/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -4719,13 +4027,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -4761,14 +4065,6 @@ layer {
   type: "Convolution"
   bottom: "conv6_2/elt_sum"
   top: "conv6_3/1x1_increase/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -4779,13 +4075,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -4829,14 +4121,6 @@ layer {
   type: "Convolution"
   bottom: "conv6_3/1x1_increase/split1"
   top: "conv6_3/3x3_dwconv/slice_0/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -4849,13 +4133,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -4870,14 +4150,6 @@ layer {
   type: "Convolution"
   bottom: "conv6_3/1x1_increase/split2"
   top: "conv6_3/3x3_dwconv/slice_1/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -4890,13 +4162,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -4911,14 +4179,6 @@ layer {
   type: "Convolution"
   bottom: "conv6_3/1x1_increase/split3"
   top: "conv6_3/3x3_dwconv/slice_2/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -4931,13 +4191,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -5024,7 +4280,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -5056,7 +4312,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -5111,14 +4367,6 @@ layer {
   type: "Convolution"
   bottom: "conv6_3/3x3_dwconv/scale"
   top: "conv6_3/1x1_decrease/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -5129,13 +4377,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -5171,14 +4415,6 @@ layer {
   type: "Convolution"
   bottom: "conv6_3/elt_sum"
   top: "conv6_4/1x1_increase/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -5189,13 +4425,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -5239,14 +4471,6 @@ layer {
   type: "Convolution"
   bottom: "conv6_4/1x1_increase/split1"
   top: "conv6_4/3x3_dwconv/slice_0/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -5259,13 +4483,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -5280,14 +4500,6 @@ layer {
   type: "Convolution"
   bottom: "conv6_4/1x1_increase/split2"
   top: "conv6_4/3x3_dwconv/slice_1/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -5300,13 +4512,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -5321,14 +4529,6 @@ layer {
   type: "Convolution"
   bottom: "conv6_4/1x1_increase/split3"
   top: "conv6_4/3x3_dwconv/slice_2/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -5341,13 +4541,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -5434,7 +4630,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -5466,7 +4662,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -5521,14 +4717,6 @@ layer {
   type: "Convolution"
   bottom: "conv6_4/3x3_dwconv/scale"
   top: "conv6_4/1x1_decrease/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -5539,13 +4727,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -5581,14 +4765,6 @@ layer {
   type: "Convolution"
   bottom: "conv6_4/elt_sum"
   top: "conv6_5/1x1_increase/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -5599,13 +4775,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -5649,14 +4821,6 @@ layer {
   type: "Convolution"
   bottom: "conv6_5/1x1_increase/split1"
   top: "conv6_5/3x3_dwconv/slice_0/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -5669,13 +4833,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -5690,14 +4850,6 @@ layer {
   type: "Convolution"
   bottom: "conv6_5/1x1_increase/split2"
   top: "conv6_5/3x3_dwconv/slice_1/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -5710,13 +4862,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -5731,14 +4879,6 @@ layer {
   type: "Convolution"
   bottom: "conv6_5/1x1_increase/split3"
   top: "conv6_5/3x3_dwconv/slice_2/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -5751,13 +4891,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -5844,7 +4980,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -5876,7 +5012,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -5931,14 +5067,6 @@ layer {
   type: "Convolution"
   bottom: "conv6_5/3x3_dwconv/scale"
   top: "conv6_5/1x1_decrease/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -5949,13 +5077,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -5991,14 +5115,6 @@ layer {
   type: "Convolution"
   bottom: "conv6_5/elt_sum"
   top: "conv7_0/1x1_increase/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -6009,13 +5125,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -6061,14 +5173,6 @@ layer {
   type: "Convolution"
   bottom: "conv7_0/1x1_increase/split1"
   top: "conv7_0/3x3_dwconv/slice_0/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -6081,13 +5185,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -6102,14 +5202,6 @@ layer {
   type: "Convolution"
   bottom: "conv7_0/1x1_increase/split2"
   top: "conv7_0/3x3_dwconv/slice_1/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -6122,13 +5214,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -6143,14 +5231,6 @@ layer {
   type: "Convolution"
   bottom: "conv7_0/1x1_increase/split3"
   top: "conv7_0/3x3_dwconv/slice_2/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -6163,13 +5243,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -6184,14 +5260,6 @@ layer {
   type: "Convolution"
   bottom: "conv7_0/1x1_increase/split4"
   top: "conv7_0/3x3_dwconv/slice_3/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -6204,13 +5272,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -6298,7 +5362,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -6330,7 +5394,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -6385,14 +5449,6 @@ layer {
   type: "Convolution"
   bottom: "conv7_0/3x3_dwconv/scale"
   top: "conv7_0/1x1_decrease/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -6403,13 +5459,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -6435,14 +5487,6 @@ layer {
   type: "Convolution"
   bottom: "conv7_0/1x1_decrease/bn"
   top: "conv7_1/1x1_increase/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -6453,13 +5497,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -6503,14 +5543,6 @@ layer {
   type: "Convolution"
   bottom: "conv7_1/1x1_increase/split1"
   top: "conv7_1/3x3_dwconv/slice_0/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -6523,13 +5555,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -6544,14 +5572,6 @@ layer {
   type: "Convolution"
   bottom: "conv7_1/1x1_increase/split2"
   top: "conv7_1/3x3_dwconv/slice_1/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -6564,13 +5584,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -6585,14 +5601,6 @@ layer {
   type: "Convolution"
   bottom: "conv7_1/1x1_increase/split3"
   top: "conv7_1/3x3_dwconv/slice_2/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -6605,13 +5613,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -6698,7 +5702,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -6730,7 +5734,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -6785,14 +5789,6 @@ layer {
   type: "Convolution"
   bottom: "conv7_1/3x3_dwconv/scale"
   top: "conv7_1/1x1_decrease/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -6803,13 +5799,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -6845,14 +5837,6 @@ layer {
   type: "Convolution"
   bottom: "conv7_1/elt_sum"
   top: "conv7_2/1x1_increase/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -6863,13 +5847,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -6913,14 +5893,6 @@ layer {
   type: "Convolution"
   bottom: "conv7_2/1x1_increase/split1"
   top: "conv7_2/3x3_dwconv/slice_0/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -6933,13 +5905,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -6954,14 +5922,6 @@ layer {
   type: "Convolution"
   bottom: "conv7_2/1x1_increase/split2"
   top: "conv7_2/3x3_dwconv/slice_1/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -6974,13 +5934,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -6995,14 +5951,6 @@ layer {
   type: "Convolution"
   bottom: "conv7_2/1x1_increase/split3"
   top: "conv7_2/3x3_dwconv/slice_2/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -7015,13 +5963,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -7108,7 +6052,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -7140,7 +6084,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -7195,14 +6139,6 @@ layer {
   type: "Convolution"
   bottom: "conv7_2/3x3_dwconv/scale"
   top: "conv7_2/1x1_decrease/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -7213,13 +6149,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -7255,14 +6187,6 @@ layer {
   type: "Convolution"
   bottom: "conv7_2/elt_sum"
   top: "conv8_0/1x1_increase/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -7273,13 +6197,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -7323,14 +6243,6 @@ layer {
   type: "Convolution"
   bottom: "conv8_0/1x1_increase/split1"
   top: "conv8_0/3x3_dwconv/slice_0/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -7343,13 +6255,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -7364,14 +6272,6 @@ layer {
   type: "Convolution"
   bottom: "conv8_0/1x1_increase/split2"
   top: "conv8_0/3x3_dwconv/slice_1/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -7384,13 +6284,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -7405,14 +6301,6 @@ layer {
   type: "Convolution"
   bottom: "conv8_0/1x1_increase/split3"
   top: "conv8_0/3x3_dwconv/slice_2/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -7425,13 +6313,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -7518,7 +6402,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -7550,7 +6434,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -7605,14 +6489,6 @@ layer {
   type: "Convolution"
   bottom: "conv8_0/3x3_dwconv/scale"
   top: "conv8_0/1x1_decrease/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -7623,13 +6499,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -7655,14 +6527,6 @@ layer {
   type: "Convolution"
   bottom: "conv8_0/1x1_decrease/bn"
   top: "conv9/1x1/bn"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
   convolution_param {
     engine: CAFFE
     fp16_accumulation: true
@@ -7673,13 +6537,9 @@ layer {
     weight_filler {
       type: "msra"
     }
-    bias_filler {
-      type: "constant"
-      value: 0
-    }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -7758,7 +6618,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }

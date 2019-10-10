@@ -47,7 +47,7 @@ $ ./int8.sh imagenet_image_root_folder  # ./int8.sh /data/imagenet1k/ (consist o
 
 
 # Score:
-- Score: 0.195493 
-- Top-1: 75.0422%
-- Top-5: 92.2582%
+- Score: 0.178852
+- Top-1: 75.0762%
+- Top-5: 92.2142%
 

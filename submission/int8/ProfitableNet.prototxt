@@ -82,7 +82,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -143,7 +143,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -202,7 +202,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -255,7 +255,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -316,7 +316,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -375,7 +375,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -428,7 +428,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -489,7 +489,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -548,7 +548,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -611,7 +611,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -684,7 +684,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -729,7 +729,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -774,7 +774,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -858,7 +858,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -889,7 +889,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -962,7 +962,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -1015,7 +1015,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -1086,7 +1086,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -1131,7 +1131,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -1214,7 +1214,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -1245,7 +1245,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -1318,7 +1318,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -1381,7 +1381,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -1452,7 +1452,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -1497,7 +1497,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -1580,7 +1580,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -1611,7 +1611,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -1684,7 +1684,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -1747,7 +1747,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -1818,7 +1818,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -1863,7 +1863,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -1946,7 +1946,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -1977,7 +1977,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -2050,7 +2050,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -2113,7 +2113,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -2186,7 +2186,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -2231,7 +2231,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -2276,7 +2276,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -2360,7 +2360,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -2391,7 +2391,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -2464,7 +2464,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -2517,7 +2517,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -2588,7 +2588,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -2633,7 +2633,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -2716,7 +2716,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -2747,7 +2747,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -2820,7 +2820,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -2883,7 +2883,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -2954,7 +2954,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -2999,7 +2999,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -3082,7 +3082,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -3113,7 +3113,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -3186,7 +3186,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -3249,7 +3249,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -3320,7 +3320,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -3365,7 +3365,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -3448,7 +3448,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -3479,7 +3479,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -3552,7 +3552,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -3615,7 +3615,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -3688,7 +3688,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -3733,7 +3733,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -3778,7 +3778,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -3862,7 +3862,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -3893,7 +3893,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -3966,7 +3966,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -4019,7 +4019,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -4092,7 +4092,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -4137,7 +4137,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -4182,7 +4182,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -4266,7 +4266,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -4297,7 +4297,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -4370,7 +4370,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -4433,7 +4433,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -4506,7 +4506,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -4551,7 +4551,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -4596,7 +4596,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -4680,7 +4680,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -4711,7 +4711,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -4784,7 +4784,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -4847,7 +4847,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -4920,7 +4920,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -4965,7 +4965,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -5010,7 +5010,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -5094,7 +5094,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -5125,7 +5125,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -5198,7 +5198,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -5261,7 +5261,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -5334,7 +5334,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -5379,7 +5379,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -5424,7 +5424,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -5508,7 +5508,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -5539,7 +5539,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -5612,7 +5612,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -5675,7 +5675,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -5748,7 +5748,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -5793,7 +5793,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -5838,7 +5838,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -5922,7 +5922,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -5953,7 +5953,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -6026,7 +6026,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -6089,7 +6089,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -6164,7 +6164,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -6209,7 +6209,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -6254,7 +6254,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -6299,7 +6299,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -6384,7 +6384,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -6415,7 +6415,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -6488,7 +6488,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -6541,7 +6541,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -6614,7 +6614,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -6659,7 +6659,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -6704,7 +6704,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -6788,7 +6788,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -6819,7 +6819,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -6892,7 +6892,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -6955,7 +6955,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -7028,7 +7028,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -7073,7 +7073,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -7118,7 +7118,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -7202,7 +7202,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -7233,7 +7233,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -7306,7 +7306,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -7369,7 +7369,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -7442,7 +7442,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -7487,7 +7487,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -7532,7 +7532,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -7616,7 +7616,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -7647,7 +7647,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -7720,7 +7720,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -7773,7 +7773,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }
@@ -7854,7 +7854,7 @@ layer {
     }
   }
   quantize_param {
-    precision: 8
+    precision: 6
     channel_shared: false
   }
 }

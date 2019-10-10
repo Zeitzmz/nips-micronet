@@ -17,5 +17,5 @@ max_iter: 400000
 momentum: 0.9
 weight_decay: 0.00004
 snapshot: 50000
-snapshot_prefix: "dsd/snapshots/caffe_train_sparsity"
+snapshot_prefix: "sparsity/snapshots/caffe_train_sparsity"
 solver_mode: GPU

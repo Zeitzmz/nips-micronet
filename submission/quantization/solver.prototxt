@@ -1,4 +1,4 @@
-net: "int8/ProfitableNet.prototxt"
+net: "quantization/ProfitableNet.prototxt"
 display: 20
 average_loss: 20
 
@@ -9,5 +9,5 @@ max_iter:     1
 momentum: 0.9
 weight_decay: 0.00004
 snapshot: 1
-snapshot_prefix: "int8/snapshots/caffe_train_fix_point"
+snapshot_prefix: "quantization/snapshots/caffe_train_fix_point"
 solver_mode: GPU

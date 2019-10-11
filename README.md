@@ -15,12 +15,12 @@ In this work, we take [BVLC/Caffe](https://caffe.berkeleyvision.org/) to impleme
 # Run
 1. Download project
 ```
-$ git clone https://github.com/Zeitzmz/nips-micronet.git --recursive
+$ git clone -b submission-1 https://github.com/Zeitzmz/nips-micronet.git "nips-micronet-submission-1" --recursive
 ```
 2. Complile caffe
 ```
-$ cd nips-micronet && git submodule foreach git pull origin master
-$ cd micronet-caffe && make -j
+$ cd nips-micronet
+$ cd micronet-caffe && git checkout -b submission-1 origin/submission-1 && make -j
 ```
 3. Test submitted model & Scoring
 ``` 

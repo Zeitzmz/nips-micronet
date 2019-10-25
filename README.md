@@ -16,7 +16,7 @@ $ git clone https://github.com/Zeitzmz/nips-micronet.git --recursive
 # build image
 $ docker build -t micronet-caffe:latest nips-micronet/micronet-caffe/docker/gpu/
 # build container
-$ docker run --gpus all -it --name test -v nips-micronet:/workspace/nips-micronet micronet-caffe:latest 
+$ docker run --gpus all -it --name test -v `pwd`/nips-micronet:/workspace/nips-micronet micronet-caffe:latest 
 ```  
 
 # Test

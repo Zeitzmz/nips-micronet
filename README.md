@@ -54,7 +54,7 @@ $ ./quantization.sh imagenet_image_root_folder  # ./quantization.sh /data/imagen
 
 
 # Score:
-- Score: 0.178852
+- Score: 0.188706
 - Top-1: 75.0762%
 - Top-5: 92.2142%
 

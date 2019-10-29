@@ -2,7 +2,7 @@
 
 [![Licensed under the MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/Zeitzmz/nips-micronet/blob/master/LICENSE)
 
-By Mengze Zeng, Jie Hu, Ziheng Wu from [Momenta](https://www.momenta.ai/).
+By Mengze Zeng (Beihang University), Jie Hu (Chinese Academy of Sciences), Ziheng Wu (Zhejiang University).
 
 All details about the challenge are documented in [submision.pdf](https://github.com/Zeitzmz/nips-micronet/blob/master/submission.pdf)
 

@@ -4,7 +4,7 @@
 
 By Mengze Zeng (Beihang University), Jie Hu (Chinese Academy of Sciences), Ziheng Wu (Zhejiang University).
 
-All details about the challenge are documented in [submision.pdf](https://github.com/Zeitzmz/nips-micronet/blob/master/submission.pdf)
+All details about the challenge are documented in submision.pdf
 
 
 # Requirements
